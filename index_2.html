@@ -1,0 +1,1101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mike's Lodging House</title>
+<meta name="theme-color" content="#155e63">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Mike's Lodging">
+<link rel="icon" type="image/jpeg" sizes="512x512" href="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAA4KCw0LCQ4NDA0QDw4RFiQXFhQUFiwgIRokNC43NjMuMjI6QVNGOj1OPjIySGJJTlZYXV5dOEVmbWVabFNbXVn/2wBDAQ8QEBYTFioXFypZOzI7WVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVn/wAARCAIAAgADASIAAhEBAxEB/8QAGwABAAEFAQAAAAAAAAAAAAAAAAYBAwQFBwL/xABZEAABAwMABAcKCgYHBQcEAwABAAIDBAURBhIhMRNBUXFzsdEUFiIyNWGBkZPBBxUzNFJTVXKhsiNCYnSC4RckNkNUkvBjg5SiwiUmRLPS4vFlhKPDRWSF/8QAGQEBAAMBAQAAAAAAAAAAAAAAAAECAwQF/8QALxEAAgECBQIFBAMAAwEAAAAAAAECAxEEEiExMjNREyJBUnEUQmGRI2KBgqGx8P/aAAwDAQACEQMRAD8A6QiIgCIiAIiIAiIgCIiAIiIAiIgCIiAIiIAiIgCIiAIiIAiIgCIiAIiIAiIgCIiAIiIAiIgCIiAIiIAiIgCIiAIiIAiIgCIiAIiIAiIgCIiAIiIAiIgCIiAIiIAiIgCIiAIiIAiIgCIiAIiIAiIgCIiAIiIAiIgCIhOBtQBFo7lpZZ7cS2SqE0o/u4fDPYPWorX/AAiVD8toKNkQ4nzHWPqGxSk2Vckjoyxqq4UdGCamqghx9OQBcertIrvXZ7or5tU/qsOo31DCwqejqqt2YKeaYnjawn8VOW2rZTxL7I6rU6a2ODYKozHkijLvx3LWTfCLQtP6GiqZPvFrfeVEIdFrtLgmBsQ/2kgH4DKz4tCqo/K1cDPM1pd2LJ1qMd5F1GrLZGzl+EeQn9FbWj783YFYd8Itf+rQ0w53OK8s0Ij/AF66Qn9mID3q6NC6MeNU1J/yj3Kn1VHuW8Gsyz/SLcv8HSf83arrPhGrB49BTnme4L0dDqD6+p9bexeHaGUp8WqqBztaU+rojwKxlRfCQ3+9tjh52TA9YWfB8INqkwJoaqE+dgcPwKj0mhY/u64j78XYVhzaIVzPkpqeX0lp/EKyxFF+pDp1l6HQ6XSmyVRAjuELXHikJYfxW2iljmYHxPbI08bTkfguLVFhucAJfRyObysw8fgsOKapoZcxSTU8g+iSwrWOWXF3KOUo8kd4RcloNNbzSYEkzKpg4pm5PrGCpRbfhAoJ8NroZKV/0h4bPw2j1KXFkqpFkyRY9HXUtdFwtJURzs5WOBxz8iyFUuEREAREQBERAEREAREQBERAEREAREQBERAEREAREQBERAEREAREQBERAEREAREQBERAEREAREQBERAF4lljgjdJK9scbRkuccAelRq/6Z0Nr1oabFXVDYWtPgMPnPuC51dr1X3mXWrJ3PbnwYm7GN5h/oqyjcpKaRO7vp9R02tHbozVyDZrnwYx7yoRddIbndSe6qp3BH+6Z4LPUN/pWVa9Fq2tw+f+qwnjePCPM3tUjZQ2LR5gfOWGbeHS+G88zeL1LGWIpweWOr/BKpVJq70RD6CxXGvAMFM5sZ/vJPBb+O/0KRUehMbQHV1W5+N7Yhgesq3cNNXHLaCnAH1k20/5R2qN1t1rq8numpke36OcN9Q2KLYip/Vf9i9GH5ZND3tWc4xTmQf71/vWNUaa0zBq0tJLIBu1yGD1bVCEUrCQes22Q8TJaRViRz6ZXCTZFHBCPM0uP4rAl0hu0vjV0jRyMw3qC1aLaNCnHaKMnWm92ZMlwrJflKuodzyO7VZMsjt8jzzuK8ItFFLZFMzZXXdnxnete2zzN8WWQczyFbRLIi7MyO63CLxK2oH+8J61mRaS3WPfUiQckjAVp0VHShLeKLqpNbMk9PplO3AqKSN/nY4tP45WwZpHaa5upVsLM8U0YcPWMqEIsJYOk9lY2jiqi31Jw+w2e4sL6N4YeWB+R6itPWaKVsALqdzKlvIPBd6j2rQse+N4fG5zHDc5pwVuaLSevpsCVzalg4pPG9YVfCr0+Er/ACW8SjPlG3wa1j6u3VOsx01LUN4xljgpXaNPqun1Y7nEKqPdwjMNePcfwV2G9Wm7sENWxrHHcycbPQ7/AOFh3HRNpzJb5ccfBSHZ6HdqLEq+WqsrHgSSvTd0dBtd5oLvFr0VQ15HjMOxzecb1sFwp8dXbasawlpqhhyCCWkecFTKw6evYWwXhuuzcKhg2j7w4+cepdFrq6KKetpHQ0VqmqYauBk1PKyWJ4y1zDkFXVU0CIiAIiIAiIgCIiAIiIAiIgCIiAIiIAiIgCIiAIiIAiIgCIiAIiIAiIgCIiAIiIAiLV32+0ljpeFqHa0jvk4mnwnn3DzoNjMrq2mt9K+oq5WxRN3ud1DlPmXM9I9M6q5l9PRF1NRnYcHD5B5zxDzBae83msvdXwtU8kA4jib4rPMBy+fet1ZNFC9rai6AtbvEGcE/e5OZJzjSV5GazVHaBpLTZau6P/Qs1IQcOld4o5uU8yl8FFaNGoBNO8GbGyR4y9x/Zbxf62rEu+k8FGzuW1tY9zRq64HgM5hx9XOodUTy1MzpZ5JOSXOI4869XXbTm350tyTIWpa3FFRyc4zzDqrjRXWolV6AMggg4I4GpSPe3uSEe4tpnRvou/KT/hVxFNYkCTMbfcjtlSWEa1b+bI7aa1SUYT0fkWjKUNUW+zXCXakql7OyFS4SfGfgPfLbHTj8R6c1odhv0G/Q+XhrwtP6RpXymz19XXWIxpD0R9D8ZxTbqDkKSascKW4+933suI90jjVIjp+S+nnUke8VlJOHi24+/ubwmpbb8Pb2NfoqL2evca/WxEuP4qx4rrZO9tXR5ug1KVJonYUUUUAUtFJQC0lFFAFFFFABIAJJAA4k1mF3ujV8ub90l5VZradDDf9oc5vXx82OurPt9c3IVkEOMT3VPXyKAOOn53vA9NZ3tG4iOpizR1ZZgpwsj57p+UfwqGm6ivP9FJSrXgRk+a/cJjkqUrU4s+hI5gOoVO7Axm39og44AeQaU4gH6WQAfRmq3UhYboq0XVqWElSBlLiR85J49vorTEg/8Am4x4GEJLOpSJb4QFuK2hSledCWE6PMc5+2qzWk3i3QdqoDciFJRyzY8Rwb9x+aocR+FUi42KZbEkzFR0Dmw6CVeYcaw7NjQyKD0a8jbHwpZnNaoZrebVEaZTHQlxClFToJyoHGBxxzVxBIOQcHqo5smndttk26KX3G2Ay3+lkOnQ02OkqO6urSKOdJyegzJCRlRwKUKBOkgpV0EYNWq0WyOlY7zx03KSDhVwlIIjNH/lo4rI6TUld7VMLeL4wq6tYz3Uw2G5bPTgcFp6qzeMk6Nl2dtWUZKlJCgk4ChpV1jjj7KRCFLVpQkqVxwBmpGXZXmo6plueTcoCflOtDC2upxHFJ+yo5CgoakK9VaJp7GMouO4I0DOtJPinGDjB5jXuNIeiSW5EdZQ62cpUK8EV7bjvPNurabUpDSdSyBuSM431LqtSE3ehbLddU2q4R7/AA06YMtXJTmE8G18/wDuHpHPWqNrS42lxCgpCgCkjgQeesR2deQqS5bJBxHnp5M5+av5ivX760P4Pbg49anrZKP5RbnOSIP0d+PVgj0CudLK3F+X6OqMr14/stlFFFSXClpKKAKKKKAKKKKAz2/y0yNuXXXMKYs0Qu45teMj7VJ9VZ64tbrinHDlayVKPSTxq03F4qY2olfOemJYB6tZPuAqtw22XZTaJL3ItKPjL05xUw3lLhp16nPia0giyVRVrUhDaytCkHWgKwCMc9cK9EAKIScjmOMZrySE7uJPADia2pbmVvYVCloVlClJPSk4r2w1JnSksRGXJMhfBKAVE1LR9ni0ymVf5BgR1DKGEjMh0dSfmjrNP7bKFwuUey2po26A8SHQyr414BJPjucebgN1Zymlsaxw70kNotkixZAamhV0uI39wRV/Ft/5rnAeYVa4ezsi5BpV4U2WG/0UJhOiM16PnnrNSSEWLZphpiS9HiJWCUIOQFY4nr48TUhe56rbZJc5pCVqYa1pSrgfVXLKcpHXGMYndiMzFQkNpHijA3cB1Dmr04UuDCgDWf8Ah5dCkqMCDgfxrqVtN8vl2gd2MRrahBcU3ha3M5Hmqk45Fcti0JqbpD+47Ptuye7YLrkOcOEhjco9ShwWOo1UrxaWFLKrswm3SScC4RUEx3D/AMxHFB6xuq2Qbpcjd2YU9mGEvNuLCmFLJBTj6XnqXeZQ6hQUkHII4UhiUri9CZQT0Zjdyt021KQJzQ5Jz9FIaOtpwdIUN1Ngo6TpUcKGDg8a0G2w0s2SO002gNOtJUtpaNTbhIBOpJ94waq16tduZVIXb5IiSGcFyE6oqSrOD8Wvn48Dvrqw8dSdM5MTs9K0QwJSoKScKByD0GtAsMsM7bxZKcBq8QwpQ5teMn7Un11QU4KCVghWNwHCrRbndKdlpHzmpimc9WsdtWxPFF/16X0M8J6NGtUUUVU6QooooAooooAooooDHp4/M96/m3+6q7irJNH5pvQ/vb/dUAEjHHf0VfC+rn0RyYz1R40YQFZTvJGM7/VTu13Jy0B1yJHYMleNMhwaltDn08wJ6abKwkZUQBQ03Jl6xCiPP6flFtsqxnzVeVVqUg5X3TxImSJClSHzrWvepSlkk+mpnYdSlbYQMhI3r4HPzFVDKs92UADbZxA4fk6+yprYi2XCLtZDffgSmm068qWypIHiHnIrKVZXR0wTtWW/bqxyrqY0hh+Mw1GbWHVvuFIAJG/geiuu094tb2ys9hm4xXHFR9KUodBKju4Cpm6OjvZL8VR+IWAAkkklJHAVTb08JNqltMMyFrcA0gRnN/xAT9H6QxXPF3X4Ohqm/wAlOdkNhjQlaSpW7cauuxlyt8fZ0syZ0dpzl1q0rcAON1Uly2XA8LfM5/6BfV1VY7Ry0ayqYdjSkLKXhpMdefGU2Rzfwn1VbtSUsOvyZdnTjOye77Wzwkgu93xtCGXwpfKDAJ04BNTZvtn0q/OkPh/XCqitzVcEuhiRpHL7+5nMeM4gp+b0A+qpFyWyVrVofxrUf1Zzf+U6/o/R31z4UKglR04krkx/asGzw+cFhH3RVE2nSBtHMA4eJ9wVerUfzRDx/UI+6KpO0oztFMPWj7grfs/8jMO1fxkPirDC3W/Z/wDmZ+8moNXyQnSndneBvNTsTdB2e/mZ+8munF3jz6M48Hd8jXqKKKodgUUUUAUUtJQBRRRQGQyxm2Xof3t/uqECanJf7PvX81/3VCnxUFWOAq2F9XPojkxd1yOS0JcBRn1VZ9kYM+VDkJi3SdGbZWEhDCkpByM5O7jVTbcw6Cec4NaF8H+6HcOp1H3KjFfdsv2dd+hwbLd/L129snspDZLx5du/tU9lOLDeZF5skqU+02y42VoAaJxuRkHfz76ytF1uhQCbnN4f2hfbWEYSk2rOqUoxSdGmwbbcWriwt29XNxCXElSFuJwoZ4Hdwq3HP0lf+qs4+DiVJkyJndMl57QprTyiyrGdXTWjKqjTTpl001aPC3Qg4U7p868V57oR/Xp9oO2q5dosOXtUlM1lhwJgjTyoBA+MPDNNhabN3+U0YsHkhECtOhGNWs7/AD4rKWLlbVFlHSy2pdC9yXtR6l5pVE6T46+B+carFojRIm07iIbTDYMI6uSAAPxg44qyKUA2pR4BJJ9VWjLMkw1TorNqV+aYf+Qj3Cqff99/mHrR9wVMSrqYOzEN6MtCnFJbQCMHGBkj7MemoS7vNu3eQ6CAHeTUnryhNb4CanZz9pacKGJFTUYfkmz38yP3k1DkVMxv1fZ7+ZH7ya3xN48+jOXC3fLqjXKKKKqdYUUUUAUUUUAUUUUBkcnfBvQ/vU+9VV2csJCEg7+OKsUj9UvQ/vQ+9VVm5auVSDw07vxqcP6ufRHNiLVchtymVEca0n4OF67dNOOLqB/0VmTYKnCnhwzVq2avTlkUUtYcYWQp1HOo4xuPMarivu0aYSSlZojVth2y2yWIDAZbUlaykEnJ08d/mrFNKUIbCXEryhJOkHcSOG/nFba5Njv2tchDg5NxkqBO7ik1hyCNCd44Cq4HmaY+yL38GX6zN/xNf+6tLXWY/Bm4lMqYCoZKmuf/ABVpinW8fKrLE8bNMPwoq91XA8K0icqLgQRgPlOAeUPTXEOWLv6o/mzku5B/V6dWs/birK61DeVqeZZcVwytsKP2iuZi27+yxvYp7KwlC23ZpelUQdqXBO1DggqjYMIkhgp48oOirBKceaiOuR2C+6lJKWwoJKvSa8tNw2VammWW1cMobCT9grqXm9J8bmPNV4rKkg9dTDpb+hPJNcohB0qUlW/xscf/AL017YfU4+CQXF4AG/mAx9gqXmRlSm2UPKSptLLakBQPigp6R1g1CSwGZRQnA0gb07q6sOak6OTEwmlZIkVLx/0Ozv8AMj95NQsclUdBUckipuP+i2d/mR+8mr4m8efRmOFu+XVGt0UUVB1BRRRQBRRRQBRRRQGdbP2yNdp16iy+U5Pu9a/EWUnIJ5xUwvYKwuY1tylY4ZkKplsV+3L19cc95q2T4jE2G5HlI1tKG8ZI4c+RWSbzS59EWypxTor3/D7Z4HPISQfrCq9DYGwJPityh5pKqqOx9wk2jaGIiY4vue4NADUokYUfFVv/AIhj0mtA2lnOwrStMb9bkqEeOP41bs+gZPoq8k06KRaaujh4KQBHRH5afyKPkoMlWkeik8Erdj9LOx9YNVb4No6JFxmuySp12KE8kVLJ0klQJ49VHwlsIjToT7BW25IC+VKVkasaQDx66ZO9lGfu5i0o2StzbqXG3ZyXE7woSFAinHeFvnn3T/VqrleLXDRsrJjIa0tsMLcbwo5SoJJBznOc1WNgZESHZpt3nrVyjbvJJWVFSiCkHSkc5JqMtqyXKnRbO8DX9uun+rVR3haP/brp/q1VF2nZpqRLeut0jFpb6tbUMOK0sj+LfvUeJHAVx+EiO2LIiakKTIbeQgLSog6TnI3Uyq6JcmlZNd4Gv7bdP9WqkVYGADqnXMDG/MtVQlksdmd2Viz7i2tJUxrdeL7icb+PGnbll7l2Ol2uZIfU3rWULZBW4pJXlIxzk7gRwplQUmdPAy0KCfHmkJSEp/KlfJ5hXBWwOzy3DqbkqWd5zJVmo+4m57OfBzHYDikSioIWoKyWgok4B6tw9NOLPZ9nrzYW+4dKZgaGt9Kzy7bmN5Uc54+ipy1qRmvQeeAtjAxpl4H/AIlVQ1+tsa1XTZ+JECw0JwV46yo5JTneaudoYei2iHHkkF5plKFkHIJAwd9VfbH947D9cR701Rt5o8+jJypRbr5ZeaKKK1ICiiigCiiigCiiigKLsX+3L19cc95q4yFaY7quhCj9lU7Yv9uXr6457zVruMV2ZCcjsylRi4NJcSgKODxAz76xXilz6Iv9CM/vVp5f4PrPcWRh2IykrI46FHj6Dg+k1NbNzXdprjEnvoUGrawEnPBchQwpQ8yR/wBVTdss/cVoVa5EpcuNoLaQtASUoIxp3ceNFrsqbTZO91vkKbVkq5coClaid5xw4bq1clVGai7sqPwZbrldk9SfvKpfhS/TWrzOe9NTti2S7xzlSY1zfXygw6hbScLHHjzb+el2g2UF/lpek3J5tDQIbbQ0nCM4zv4nhU5lnsrleTKSt6/YM/6q59w1l9nsMm67LSZUN50vxZGpDAPiq8UEkfxdHmxWmSrZJk2Y29y5OBS0lDj4aTqWk7sY4Ddz002d2c8Hy4hie66w4dSmltpHjYwCCN4qIyyotKOZobbFbSC9Qu5pS/y+Onx8/wBIn6Xn6evz1z+Ej91//MN/jQvYtAvS7rFub8V9TpcAaaSAknmxz9fTT++2By9xGYsi4uNtIwpYQ0n4xY+cejjwFRpmtCpZaZBWvZhm5bIQ1typSJC20rSFSFFoKB4aOGN1XRuSy6+8y04FOMEBxI+aSMgH0VBw9nrhChtxIu0MttlsYQnuds4HnIzT2xWdNmjvNiS7JcfeLzjruNSiQB+FRJ35kxVeR2uioK2moNxSFtzV8ilKhuUrBOM83Dd11Q9odkHrE2u72WY6lDHjKSVYW2M8QocR1H7au98szN7itMPPPM8k6HULaICgoAgcfPTGTs/PnRRDuN9eeiHGtKI6ELcA5ir/AOKmLrzInHN5DvZi4PXTZ6JMkgB5aSFkDAUQSM+nFQO2P7x2H64j3pq3RY7MOK1GjNhtlpIShI5gKqO2P7x2H62j3pqj8cefRl/od/NUXmiiitSoUtJS0AlFLSUAUUUUBRdi/wBu3r6457zVveQ+pQLT6WxjeC2FfjVQ2L/bt6+uOe81daw+qXPoi68KGklp9duktFYddW2sJwnTvKcAcaZPtvyIcUOQnlNsqAeYUUguDTgEb8EA78E76mMUY6qONkpkCuE93GwlyG44yJZcEbUCUN6SAN5xx34zuzQuFK7jjJdYW60hxxSo+vUUpOdAOSArT0Z91T2KSoyInMyIjRpYFuLjIRySXgtKTuQCPF3ZPvNN7dAuTCmGypWhERYSpSsltxWnxT04IyKc7S31iwW0yXE8o6s6WWs41q7Bz1ld02jvc6Qruqa+1g/omyW0p6sD8avHBzGc8ZRNStEZ9iV40LudHIhLilEFSl7ufJ1DickCvNwhTnX5ymFaW3ORwjSCV4xnBzuxWY2zai82x1KmprjqM72nlFaVevh6K1awXmPfLYiYwNBzpcbJyUK6Ow0lg5VQhjKTGs6FIclSlJiuOPuLSY0kOABkbuvIwcncN+a6yI8pUx5pLC1IekNPB0KGlKU6cg7858Xh11MUYqmRGmYgjDkCVcVNRl4facw4vGoqPAJIO8ecDFOrTHdZt5aDfczmRvU0kZ3DfgKOfPmpOjFSopOw5HBpuQleXZCVp+iGgn7c1Utsf3jsP1tHvTVzqmbY/vJYfraPempXijz6MrLwv55ovNFFFbFAooooAooooAooooDH5kqREZvbsR9xlzvmRrbUUnGVbsiojv7ePKs326u2pK6/ql7/AJp+KqYRLcw/HjrW6scqspWsKQEt7yAkgnOTzHhvHXTCq5c+iMcS9K4dTx39vHlWb7dXbR39vHlWb7dXbTxuzwFE8rPLCgRltekqGUZ05G7UFYHmJ5xivLdqguPltMtatKG9RSpI0lQypRzjxU7sgZ48a10M6lxGvf28eVZvt1dtKm/3lKgRdZuRw+PVXddut7SGVKlLc1x1OKCFJ8VYQFY3jnyRj/8AKim0IWHCt1LZSnUkEHxz0DHPTQd5eZO7WXdy8d631qziGNf+ZqIX9oFXafY40tt5t6JbFLck8sp5UkodIznB8XI3buNZjEiqlcpl1DTbKdS1ryQkEgDcATxIpyqDImyX3pEhtS+RElbi8kqCsY5uO8VDiWUt20XSbsxbY8WRJYiRG+RjPKITMU8VfFnGEkcQcHNVvZi8vWi23hbTmha2EBrn+MKsAj0En0U2iWS5ocaVHUltciMXE7yCpKiElHDeSFDd0HpqNSwBKXHdfQ0EqUFLIJTkZ6PV6aVpqG9U0qHRv15JybrN9urto7+3jyrN9urtogQWZMblHHVJJdCFKBSA0nd4ys7yN54dFOzaIQaccXLW0pCSssLKCvASokZG7O4EDoPTU6Fak/Mad/bx5Vm+3V20d/bx5Vm+3V209TZYSSUuTVK0vIQpaCkgJVvz17iOcb8ivKrNESw6sTOVUhrWkIUMKOEH1eMfVTQVIad/bx5Vm+3V21Nw5MiWnZ16U+484biRrcUVHGpPOai51tgRUPluWp/SgrbKSkZ+M0YI6efd7jT+1fq+zn8yV95NZ4lXHn0Zph3rfDqjYaKKKg2CiiigCiiloBKKKWgMkvsRMK6XS23JxUZuXI7pjvlBUk7zuOPPjziojvVbvL0P2S+ytrlRI0xvk5cdp9HHS4gKH20y8HbJ5JhewT2VFNNtOr5FWr3RkPeq3eXonsl9lHeq3eXofsl9la94O2TyTC9gnso8HbJ5JhewT2U733P09iMi4L1Mh71W7y9E9kvso71W/wAvRPZL7K17wdsnkmF7BPZR4O2TyTC9gnsp3vufp7DIuC9TJWIUWO5ykfaOO0vGNSEOA49VdAy2EhI2oa0hOgDS58no4cK1bwdsnkmF7BPZR4O2TyTC9gnspUvufp7DKuH7MnMZg/8Aednjng5x3dg9Qrkq2QFKKlX+KVE5JLbmSfVWu+Dtk8kwvYJ7KPB2yeSYXsE9lO99z9PYZVwXqZD3qt3l6H7JfZR3qt3l6H7JfZWveDtk8kwvYJ7KPB2yeSYXsE9lO99z9PYZFwXqZD3qt3l6H7JfZR3qt3l6H7JfZWveDtk8kwvYJ7KPB2yeSYXsE9lO99z9PYZFwXqZD3qt/l6J7JfZUzYYyJ13tNvtq1SGYDxkSJGgpTxBwM+YDrzWi+Dtk8kwvYJ7KexYkaG1ycSO0wjjpbQEj7KU7Tbv/CVGtkdqKKKksFFFLQH/2Q==">
+<style>
+  :root{
+    --bg:#f4efe6;
+    --panel:#fffdf8;
+    --ink:#2c2620;
+    --muted:#8a7f70;
+    --line:#e7ddcd;
+    --brand:#155e63;
+    --brand-dark:#0e474b;
+    --brand-soft:#e2f0f0;
+    --gold:#c08a2d;
+    --gold-soft:#f6ecd7;
+    --green:#2f7d43;
+    --green-soft:#e4f2e6;
+    --red:#b5432f;
+    --red-soft:#f8e6e0;
+    --shadow:0 8px 30px rgba(44,38,32,.10);
+    --radius:16px;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0}
+  body{
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    background:var(--bg);color:var(--ink);line-height:1.5;-webkit-font-smoothing:antialiased;
+  }
+  button{font-family:inherit;cursor:pointer}
+  input,select{font-family:inherit;font-size:15px}
+  .hidden{display:none !important}
+  #login{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:24px;background:radial-gradient(1200px 600px at 50% -10%,#1c6f74 0%,var(--brand-dark) 60%);}
+  .login-card{background:var(--panel);border-radius:22px;box-shadow:var(--shadow);width:100%;max-width:400px;padding:34px 30px;text-align:center;}
+  .logo{width:64px;height:64px;border-radius:18px;margin:0 auto 14px;background:linear-gradient(135deg,var(--brand),#1c8a90);display:flex;align-items:center;justify-content:center;font-size:32px;box-shadow:var(--shadow);}
+  .login-card h1{font-size:22px;margin:6px 0 2px;letter-spacing:.3px}
+  .login-card .sub{color:var(--muted);font-size:13px;margin-bottom:22px}
+  .field{text-align:left;margin-bottom:14px}
+  .field label{display:block;font-size:12px;font-weight:600;color:var(--muted);margin-bottom:6px;text-transform:uppercase;letter-spacing:.5px}
+  .field select,.field input{width:100%;padding:12px 14px;border:1.5px solid var(--line);border-radius:12px;background:#fff;color:var(--ink);}
+  .field input:focus,.field select:focus{outline:none;border-color:var(--brand)}
+  .pin-input{letter-spacing:8px;text-align:center;font-size:20px;font-weight:700}
+  .btn-primary{width:100%;padding:13px;border:none;border-radius:12px;background:var(--brand);color:#fff;font-weight:700;font-size:15px;letter-spacing:.3px;transition:.15s;}
+  .btn-primary:hover{background:var(--brand-dark)}
+  .login-err{color:var(--red);font-size:13px;margin-top:10px;min-height:18px;font-weight:600}
+  .login-hint{margin-top:18px;font-size:11.5px;color:var(--muted);line-height:1.6}
+  #app{max-width:1040px;margin:0 auto;padding:0 16px 60px}
+  header.topbar{display:flex;align-items:center;gap:12px;padding:16px 4px;flex-wrap:wrap;}
+  .topbar .mark{width:40px;height:40px;border-radius:12px;background:linear-gradient(135deg,var(--brand),#1c8a90);display:flex;align-items:center;justify-content:center;font-size:20px}
+  .topbar h1{font-size:18px;margin:0;letter-spacing:.3px}
+  .topbar .who{font-size:12px;color:var(--muted)}
+  .topbar .spacer{flex:1}
+  .logout{background:#fff;border:1.5px solid var(--line);border-radius:10px;padding:8px 14px;font-weight:600;font-size:13px;color:var(--ink)}
+  .logout:hover{border-color:var(--brand);color:var(--brand)}
+  .bell{position:relative;background:#fff;border:1.5px solid var(--line);border-radius:10px;padding:8px 12px;font-size:16px;line-height:1}
+  .cloudchip{font-size:11.5px;font-weight:700;padding:7px 11px;border-radius:20px;border:1.5px solid var(--line);background:#fff;color:var(--muted);cursor:pointer;white-space:nowrap}
+  .cloudchip.on{background:var(--green-soft);border-color:var(--green);color:var(--green)}
+  .cloudchip.busy{background:var(--gold-soft);border-color:var(--gold);color:var(--gold)}
+  .cloudchip.err{background:var(--red-soft);border-color:var(--red);color:var(--red)}
+  .bell:hover{border-color:var(--brand)}
+  .bell-badge{position:absolute;top:-7px;right:-7px;background:var(--red);color:#fff;font-size:11px;font-weight:800;min-width:19px;height:19px;border-radius:20px;display:flex;align-items:center;justify-content:center;padding:0 4px}
+  .rem-head{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;margin-bottom:6px}
+  .rem-group{margin-top:12px}
+  .rem-group .gt{font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.5px;margin-bottom:6px}
+  .rem-item{display:flex;align-items:center;gap:10px;padding:10px 12px;border-radius:12px;margin-bottom:7px;border:1.5px solid var(--line);background:#fff}
+  .rem-item.today{border-color:var(--red);background:var(--red-soft)}
+  .rem-item.tmrw{border-color:var(--gold);background:var(--gold-soft)}
+  .rem-item .rn{font-weight:700}
+  .rem-item .rmeta{font-size:12.5px;color:var(--muted)}
+  .rem-item .spacer2{flex:1}
+  .rem-item a.call{text-decoration:none;font-weight:700;font-size:13px;color:var(--brand);background:var(--brand-soft);padding:7px 12px;border-radius:10px;white-space:nowrap}
+  .rem-item .smsbtn{border:none;font-family:inherit;cursor:pointer;margin-left:6px;background:var(--gold-soft);color:var(--gold)}
+  .rem-item .smsbtn:hover{background:#f0e0be}
+  .rem-empty{color:var(--muted);font-size:13.5px;padding:6px 0}
+  .notif-btn{font-size:12.5px;font-weight:600;padding:7px 12px;border-radius:10px;border:1.5px solid var(--line);background:#fff;color:var(--brand)}
+  .notif-btn:hover{border-color:var(--brand)}
+  .notif-on{background:var(--green-soft);border-color:var(--green);color:var(--green)}
+  .ticker-item{display:flex;align-items:center;gap:12px;padding:10px 12px;border-radius:12px;border:1.5px solid var(--line);background:#fff;margin-bottom:7px;transition:.15s}
+  .ticker-item.paid{background:var(--green-soft);border-color:var(--green)}
+  .ticker-item.paid .t-name{color:var(--green)}
+  .ticker-cb{width:22px;height:22px;border-radius:6px;border:2px solid var(--line);background:#fff;cursor:pointer;flex:none;display:flex;align-items:center;justify-content:center;font-size:14px;transition:.15s}
+  .ticker-item.paid .ticker-cb{background:var(--green);border-color:var(--green);color:#fff}
+  .t-name{font-weight:700;font-size:14px;flex:1}
+  .t-meta{font-size:12.5px;color:var(--muted)}
+  .t-amt{font-weight:800;font-size:15px;color:var(--green);margin-left:auto}
+  .ticker-item:not(.paid) .t-amt{color:var(--muted)}
+  .settle-box .sl{display:flex;justify-content:space-between;padding:5px 0;font-size:14px;border-bottom:1px dotted rgba(21,94,99,.25)}
+  .settle-box .sl.big{font-size:17px;font-weight:800;border-bottom:none;border-top:2px solid var(--brand);margin-top:6px;padding-top:10px;color:var(--brand-dark)}
+  .settle-actions{display:flex;gap:8px;margin-top:12px;flex-wrap:wrap}
+  nav.tabs{display:flex;gap:6px;background:var(--panel);padding:6px;border-radius:14px;box-shadow:var(--shadow);margin-bottom:20px;flex-wrap:wrap}
+  nav.tabs button{flex:1;min-width:110px;border:none;background:transparent;padding:11px 10px;border-radius:10px;font-weight:600;font-size:14px;color:var(--muted);transition:.15s;}
+  nav.tabs button.active{background:var(--brand);color:#fff}
+  nav.tabs button:not(.active):hover{background:var(--brand-soft);color:var(--brand)}
+  .panel{background:var(--panel);border-radius:var(--radius);box-shadow:var(--shadow);padding:22px;margin-bottom:18px}
+  .panel h2{margin:0 0 4px;font-size:17px}
+  .panel .desc{color:var(--muted);font-size:13px;margin:0 0 16px}
+  .section-title{font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.6px;color:var(--muted);margin:22px 0 12px}
+  .kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin-bottom:6px}
+  .kpi{background:var(--panel);border-radius:14px;box-shadow:var(--shadow);padding:16px 16px}
+  .kpi .label{font-size:11.5px;text-transform:uppercase;letter-spacing:.5px;color:var(--muted);font-weight:600}
+  .kpi .val{font-size:24px;font-weight:800;margin-top:6px;letter-spacing:-.5px}
+  .kpi .val.small{font-size:20px}
+  .kpi.brand{background:linear-gradient(135deg,var(--brand),#1c8a90);color:#fff}
+  .kpi.brand .label{color:rgba(255,255,255,.85)}
+  .kpi.gold .val{color:var(--gold)}
+  .kpi.green .val{color:var(--green)}
+  .kpi.red .val{color:var(--red)}
+  .rooms{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px}
+  .room{border:1.5px solid var(--line);border-radius:14px;padding:14px;background:#fff}
+  .room .rhead{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}
+  .room .rname{font-weight:700;font-size:15px}
+  .room .badge{font-size:11px;font-weight:700;padding:3px 9px;border-radius:20px}
+  .badge.full{background:var(--green-soft);color:var(--green)}
+  .badge.part{background:var(--gold-soft);color:var(--gold)}
+  .badge.empty{background:var(--red-soft);color:var(--red)}
+  .slot{display:flex;align-items:center;gap:8px;padding:7px 0;font-size:14px;border-top:1px dashed var(--line)}
+  .slot:first-of-type{border-top:none}
+  .slot .dot{width:9px;height:9px;border-radius:50%;flex:none}
+  .slot.filled .dot{background:var(--green)}
+  .slot.vacant .dot{background:var(--line)}
+  .slot.vacant span{color:var(--muted);font-style:italic}
+  .slot .fee{margin-left:auto;font-size:12.5px;color:var(--muted);font-weight:600}
+  table{width:100%;border-collapse:collapse;font-size:14px}
+  th{text-align:left;font-size:11.5px;text-transform:uppercase;letter-spacing:.5px;color:var(--muted);font-weight:700;padding:8px 10px;border-bottom:2px solid var(--line)}
+  td{padding:11px 10px;border-bottom:1px solid var(--line);vertical-align:middle}
+  tr:last-child td{border-bottom:none}
+  .num{text-align:right;font-variant-numeric:tabular-nums}
+  .table-wrap{overflow-x:auto}
+  .empty-state{text-align:center;padding:34px 16px;color:var(--muted)}
+  .empty-state .big{font-size:40px;margin-bottom:8px}
+  .form-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px}
+  .form-grid.tight{grid-template-columns:repeat(auto-fit,minmax(140px,1fr))}
+  .inp{display:flex;flex-direction:column;gap:5px}
+  .inp label{font-size:12px;font-weight:600;color:var(--muted)}
+  .inp input,.inp select{padding:10px 12px;border:1.5px solid var(--line);border-radius:10px;background:#fff;color:var(--ink);width:100%}
+  .inp input:focus,.inp select:focus{outline:none;border-color:var(--brand)}
+  .btn{border:none;border-radius:10px;padding:10px 16px;font-weight:600;font-size:14px;transition:.15s}
+  .btn.solid{background:var(--brand);color:#fff}
+  .btn.solid:hover{background:var(--brand-dark)}
+  .btn.ghost{background:#fff;border:1.5px solid var(--line);color:var(--ink)}
+  .btn.ghost:hover{border-color:var(--brand);color:var(--brand)}
+  .btn.danger{background:var(--red-soft);color:var(--red)}
+  .btn.danger:hover{background:#f0d3ca}
+  .btn.small{padding:6px 12px;font-size:12.5px}
+  .row-actions{display:flex;gap:6px;justify-content:flex-end}
+  .actions-bar{display:flex;gap:10px;margin-top:16px;flex-wrap:wrap}
+  .month-nav{display:flex;align-items:center;gap:10px;justify-content:center;margin-bottom:4px}
+  .month-nav button{width:40px;height:40px;border-radius:12px;border:1.5px solid var(--line);background:#fff;font-size:18px;font-weight:700;color:var(--brand)}
+  .month-nav button:hover{background:var(--brand-soft)}
+  .month-nav .mlabel{font-size:19px;font-weight:800;min-width:180px;text-align:center;letter-spacing:.3px}
+  .money-in{color:var(--green);font-weight:700}
+  .money-out{color:var(--red);font-weight:700}
+  .pill{display:inline-block;font-size:11px;font-weight:700;padding:2px 9px;border-radius:20px;background:var(--brand-soft);color:var(--brand)}
+  .pill.laundry{background:var(--gold-soft);color:var(--gold)}
+  .summary-line{display:flex;justify-content:space-between;padding:9px 2px;font-size:15px;border-bottom:1px dashed var(--line)}
+  .summary-line.total{border-top:2px solid var(--line);border-bottom:none;margin-top:6px;padding-top:12px;font-weight:800;font-size:17px}
+  .summary-line .lbl{color:var(--muted)}
+  .note{background:var(--gold-soft);border-left:4px solid var(--gold);border-radius:8px;padding:10px 14px;font-size:13px;color:#6b5423;margin-top:12px}
+  .saved-flash{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:var(--brand-dark);color:#fff;padding:10px 20px;border-radius:30px;font-size:13px;font-weight:600;box-shadow:var(--shadow);opacity:0;transition:.3s;pointer-events:none;z-index:50}
+  .saved-flash.show{opacity:1}
+  @media(max-width:560px){
+    nav.tabs button{min-width:0;font-size:12.5px;padding:10px 4px}
+    .panel{padding:16px}
+    .month-nav .mlabel{min-width:120px;font-size:16px}
+  }
+  #printDoc{background:#fff;border-radius:var(--radius);box-shadow:var(--shadow);padding:34px;max-width:800px;margin:0 auto}
+  .pd-head{text-align:center;border-bottom:3px double var(--brand);padding-bottom:16px;margin-bottom:18px}
+  .pd-head .biz{font-size:24px;font-weight:800;letter-spacing:.5px;color:var(--brand)}
+  .pd-head .subttl{color:var(--muted);font-size:13px;margin-top:2px}
+  .pd-head .mo{font-size:19px;font-weight:800;margin-top:12px}
+  .pd-head .tag{font-size:12px;color:var(--muted);margin-top:2px}
+  .pd-meta{display:flex;justify-content:space-between;font-size:12.5px;color:var(--muted);margin-bottom:16px;flex-wrap:wrap;gap:6px}
+  .pd-sec{margin:16px 0;break-inside:avoid}
+  .pd-sec h3{font-size:12.5px;text-transform:uppercase;letter-spacing:.6px;color:var(--brand);border-bottom:1.5px solid var(--line);padding-bottom:6px;margin:0 0 8px}
+  .pd-table{width:100%;border-collapse:collapse;font-size:13px}
+  .pd-table th{font-size:10.5px;text-transform:uppercase;letter-spacing:.4px;color:var(--muted);text-align:left;padding:6px 8px;border-bottom:1.5px solid var(--line)}
+  .pd-table td{padding:7px 8px;border-bottom:1px solid var(--line)}
+  .pd-line{display:flex;justify-content:space-between;padding:5px 2px;font-size:14px;border-bottom:1px dotted var(--line)}
+  .pd-line .l{color:#4a4238}
+  .pd-total{display:flex;justify-content:space-between;padding:9px 2px;font-weight:800;font-size:15px;border-top:2px solid var(--ink);margin-top:4px}
+  .pd-carry{background:var(--brand-soft);border-radius:12px;padding:14px 18px;margin-top:16px;break-inside:avoid}
+  .pd-carry .row{display:flex;justify-content:space-between;padding:4px 0;font-size:14px}
+  .pd-carry .row.big{font-size:18px;font-weight:800;border-top:1.5px solid var(--brand);margin-top:6px;padding-top:10px;color:var(--brand)}
+  .pd-note{font-size:12px;color:#6b5423;background:var(--gold-soft);border-radius:8px;padding:8px 12px;margin-top:12px}
+  .pd-receipts{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px;margin-top:10px}
+  .pd-receipt{border:1px solid var(--line);border-radius:10px;overflow:hidden;position:relative;background:#fff;break-inside:avoid}
+  .pd-receipt img{width:100%;height:130px;object-fit:cover;display:block}
+  .pd-receipt .cap{font-size:10.5px;padding:5px 7px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .pd-receipt .rm{position:absolute;top:5px;right:5px;background:rgba(181,67,47,.92);color:#fff;border:none;border-radius:50%;width:22px;height:22px;font-size:12px;line-height:1}
+  .pd-foot{text-align:center;font-size:11px;color:var(--muted);margin-top:24px;border-top:1px solid var(--line);padding-top:10px}
+  .pos{color:var(--green);font-weight:700}
+  .neg{color:var(--red);font-weight:700}
+  @media print{
+    @page{margin:14mm}
+    body{background:#fff}
+    body *{visibility:hidden}
+    #printDoc,#printDoc *{visibility:visible}
+    #printDoc{position:absolute;left:0;top:0;width:100%;max-width:100%;box-shadow:none;padding:0;border-radius:0}
+    .no-print,#printDoc .no-print{display:none !important}
+    .pd-receipts{grid-template-columns:repeat(3,1fr)}
+    .pd-receipt img{height:auto;max-height:240px;object-fit:contain}
+  }
+</style>
+</head>
+<body>
+
+<div id="login">
+  <div class="login-card">
+    <div class="logo"><img src="data:image/jpeg;base64,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" style="width:52px;height:52px;border-radius:14px;object-fit:cover"></div>
+    <h1>MIKE'S LODGING HOUSE</h1>
+    <div class="sub">Torres Family Boarding House</div>
+    <div class="field">
+      <label>Sign in as</label>
+      <select id="loginRole">
+        <option value="owner">Mike Torres — Owner</option>
+        <option value="manager">Ohara Torres — Manager</option>
+      </select>
+    </div>
+    <div class="field">
+      <label>PIN Code</label>
+      <input id="loginPin" class="pin-input" type="password" inputmode="numeric" maxlength="6" placeholder="••••">
+    </div>
+    <button class="btn-primary" onclick="doLogin()">Enter</button>
+    <div class="login-err" id="loginErr"></div>
+    <div class="login-hint" id="loginHint"></div>
+  </div>
+</div>
+
+<div id="app" class="hidden">
+  <header class="topbar">
+    <div class="mark"><img src="data:image/jpeg;base64,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" style="width:32px;height:32px;border-radius:8px;object-fit:cover"></div>
+    <div>
+      <h1>MIKE'S LODGING HOUSE</h1>
+      <div class="who" id="whoLabel"></div>
+    </div>
+    <div class="spacer"></div>
+    <span class="cloudchip" id="cloudChip" title="Cloud sync status" onclick="showTab('settings')">Local only</span>
+    <button class="bell" id="bellBtn" onclick="showTab('dash');scrollToReminders()" title="Rent due reminders">🔔<span class="bell-badge hidden" id="bellBadge">0</span></button>
+    <button class="logout" onclick="logout()">Log out</button>
+  </header>
+
+  <nav class="tabs">
+    <button data-tab="dash" class="active" onclick="showTab('dash')">Dashboard</button>
+    <button data-tab="lodgers" onclick="showTab('lodgers')">Lodgers</button>
+    <button data-tab="monthly" onclick="showTab('monthly')">Monthly Ledger</button>
+    <button data-tab="year" onclick="showTab('year')">Year View</button>
+    <button data-tab="print" onclick="showTab('print')">Printable Records</button>
+    <button data-tab="settings" onclick="showTab('settings')">Settings</button>
+  </nav>
+
+  <section id="tab-dash">
+    <div class="panel" id="reminderPanel"></div>
+    <div class="kpis" id="dashKpis"></div>
+    <div class="panel">
+      <h2>Room Occupancy</h2>
+      <p class="desc">5 rooms · Rooms 1–4 hold 2 lodgers each · Room 5 holds 1 lodger (9 beds total)</p>
+      <div class="rooms" id="roomGrid"></div>
+    </div>
+    <div class="panel">
+      <h2>Income &amp; Profit History</h2>
+      <p class="desc">Each month's net income carries over into the overall running profit.</p>
+      <div class="table-wrap"><table id="historyTable"></table></div>
+    </div>
+  </section>
+
+  <section id="tab-lodgers" class="hidden">
+    <div class="panel">
+      <h2>Lodgers</h2>
+      <p class="desc">Policy: one month advance + one month deposit. Deposit is held and refundable — it is not counted as income.</p>
+      <div class="table-wrap"><table id="lodgerTable"></table></div>
+    </div>
+    <div class="panel">
+      <h2 id="lodgerFormTitle">Add Lodger</h2>
+      <div class="form-grid">
+        <div class="inp"><label>Full name</label><input id="lgName" placeholder="e.g. Juan dela Cruz"></div>
+        <div class="inp"><label>Contact number</label><input id="lgPhone" type="tel" placeholder="e.g. 0917 123 4567"></div>
+        <div class="inp"><label>Hometown address</label><input id="lgAddress" placeholder="e.g. Brgy. San Jose, Iloilo"></div>
+        <div class="inp"><label>Room</label><select id="lgRoom"></select></div>
+        <div class="inp"><label>Monthly rental fee (₱)</label><input id="lgFee" type="number" min="0" step="50" placeholder="0"></div>
+        <div class="inp"><label>Date started</label><input id="lgStart" type="date"></div>
+        <div class="inp"><label>Deposit held (₱)</label><input id="lgDeposit" type="number" min="0" step="50" placeholder="usually = 1 month"></div>
+        <div class="inp"><label>Status</label><select id="lgStatus"><option value="active">Active</option><option value="out">Moved out</option></select></div>
+      </div>
+      <div class="actions-bar">
+        <button class="btn solid" onclick="saveLodger()" id="lgSaveBtn">Add lodger</button>
+        <button class="btn ghost hidden" onclick="cancelLodgerEdit()" id="lgCancelBtn">Cancel</button>
+      </div>
+    </div>
+    <div class="panel">
+      <h2>Move-out / Extension Settlement</h2>
+      <p class="desc">Work out the final payment when a lodger leaves or extends.</p>
+      <div class="form-grid tight">
+        <div class="inp"><label>Lodger</label><select id="stLodger" onchange="calcSettlement()"></select></div>
+        <div class="inp"><label>What's happening?</label>
+          <select id="stMode" onchange="calcSettlement()">
+            <option value="out">Moving out (deposit covers last month)</option>
+            <option value="ext">Extending by extra days</option>
+          </select>
+        </div>
+        <div class="inp" id="stDaysWrap" style="display:none"><label>Extra days to extend</label><input id="stDays" type="number" min="1" step="1" value="1" oninput="calcSettlement()"></div>
+        <div class="inp" id="stRefWrap" style="display:none"><label>Extension in month</label><input id="stRefMonth" type="month" onchange="calcSettlement()"></div>
+      </div>
+      <div id="settlementResult"></div>
+    </div>
+  </section>
+
+  <section id="tab-monthly" class="hidden">
+    <div class="panel">
+      <div class="month-nav">
+        <button onclick="changeMonth(-1)">‹</button>
+        <div class="mlabel" id="monthLabel">—</div>
+        <button onclick="changeMonth(1)">›</button>
+      </div>
+      <div style="text-align:center;margin-top:10px">
+        <input type="month" id="monthJump" onchange="jumpMonth(this.value)" style="padding:8px 12px;border:1.5px solid var(--line);border-radius:10px;background:#fff;color:var(--ink)">
+      </div>
+    </div>
+    <div class="kpis" id="monthKpis"></div>
+    <div class="panel">
+      <h2>Income this month</h2>
+      <p class="desc">All income entered manually below — actual payments collected, not auto-calculated rent. Add each lodger's payment under "Other income" when received.</p>
+      <div class="section-title">✓ Payment collection — tick when received</div>
+      <div id="tickerList"></div>
+      <div class="table-wrap"><table id="incomeTable"></table></div>
+      <div class="section-title">Laundry space rental — Mr. Jose Go</div>
+      <div class="form-grid tight">
+        <div class="inp"><label>💼 Monthly building rental for this month (₱)</label><input id="mlLaundry" type="number" min="0" step="50" onchange="saveMonthLaundry()"></div>
+      </div>
+      <p class="desc" style="margin:6px 0 0">Editable each month.</p>
+      <div class="section-title">Other income (optional)</div>
+      <div class="form-grid tight">
+        <div class="inp"><label>Description</label><input id="oiDesc" placeholder="e.g. late fee, misc."></div>
+        <div class="inp"><label>Amount (₱)</label><input id="oiAmt" type="number" min="0" step="10"></div>
+        <div class="inp" style="justify-content:flex-end"><button class="btn ghost" onclick="addOtherIncome()">Add income</button></div>
+      </div>
+      <div id="otherIncomeList"></div>
+    </div>
+    <div class="panel">
+      <h2>Expenses this month</h2>
+      <div class="section-title">Utility bills</div>
+      <div class="form-grid tight">
+        <div class="inp"><label>💧 Water utility bill (₱)</label><input id="exWater" type="number" min="0" step="10" oninput="saveUtilities()"></div>
+        <div class="inp"><label>⚡ Electrical bill (₱)</label><input id="exElec" type="number" min="0" step="10" oninput="saveUtilities()"></div>
+      </div>
+      <div class="section-title">🏛 Government Contributions</div>
+      <div class="form-grid tight">
+        <div class="inp"><label>Type</label>
+          <select id="govCat" onchange="autoFillGovNote()">
+            <option value="SSS contribution">SSS contribution</option>
+            <option value="Pag-ibig contribution">Pag-ibig contribution</option>
+            <option value="PhilHealth contribution">PhilHealth contribution</option>
+          </select>
+        </div>
+        <div class="inp"><label>Note</label><input id="govNote" placeholder="auto-fills when you pick type"></div>
+        <div class="inp"><label>Amount (₱)</label><input id="govAmt" type="number" min="0" step="10"></div>
+        <div class="inp" style="justify-content:flex-end"><button class="btn ghost" onclick="addGov()">Add contribution</button></div>
+      </div>
+      <div class="table-wrap"><table id="govTable"></table></div>
+      <div class="section-title">🔧 Repair &amp; Maintenance</div>
+      <div class="form-grid tight">
+        <div class="inp"><label>Type of work</label>
+          <select id="rmCat">
+            <option value="Door knob repair">Door knob repair</option>
+            <option value="Key duplication">Key duplication</option>
+            <option value="Fire extinguisher refill / purchase">Fire extinguisher refill / purchase</option>
+            <option value="Flooring repair">Flooring repair</option>
+            <option value="Ceiling repair">Ceiling repair</option>
+            <option value="Cabinet repair">Cabinet repair</option>
+            <option value="Battery for alarms">Battery for alarms</option>
+            <option value="Light bulb change">Light bulb change</option>
+            <option value="Brooms">Brooms</option>
+            <option value="Dustpan">Dustpan</option>
+            <option value="Garbage bin">Garbage bin</option>
+            <option value="Others">Others</option>
+          </select>
+        </div>
+        <div class="inp"><label>Note (optional)</label><input id="rmNote" placeholder="e.g. Room 3 main door"></div>
+        <div class="inp"><label>Amount (₱)</label><input id="rmAmt" type="number" min="0" step="10"></div>
+        <div class="inp" style="justify-content:flex-end"><button class="btn ghost" onclick="addRM()">Add item</button></div>
+      </div>
+      <div class="table-wrap"><table id="rmTable"></table></div>
+    </div>
+    <div class="panel">
+      <h2>Monthly Summary</h2>
+      <div id="monthSummary"></div>
+      <div class="note" id="depositNote"></div>
+    </div>
+  </section>
+
+  <section id="tab-year" class="hidden">
+    <div class="panel">
+      <div class="month-nav">
+        <button onclick="changeYear(-1)">‹</button>
+        <div class="mlabel" id="yearLabel">—</div>
+        <button onclick="changeYear(1)">›</button>
+      </div>
+    </div>
+    <div class="kpis" id="yearKpis"></div>
+    <div class="panel">
+      <h2>Month by Month</h2>
+      <div class="table-wrap"><table id="yearTable"></table></div>
+    </div>
+  </section>
+
+  <section id="tab-print" class="hidden">
+    <div class="panel no-print">
+      <div class="month-nav">
+        <button onclick="changePrintMonth(-1)">‹</button>
+        <div class="mlabel" id="printMonthLabel">—</div>
+        <button onclick="changePrintMonth(1)">›</button>
+      </div>
+      <div style="text-align:center;margin-top:10px">
+        <input type="month" id="printMonthJump" onchange="jumpMonth(this.value)" style="padding:8px 12px;border:1.5px solid var(--line);border-radius:10px;background:#fff;color:var(--ink)">
+      </div>
+      <div class="actions-bar" style="justify-content:center">
+        <button class="btn solid" onclick="window.print()">🖨 Print / Save as PDF</button>
+        <label class="btn ghost" style="display:inline-flex;align-items:center;gap:6px">📎 Attach bill / receipt image
+          <input type="file" accept="image/*" multiple style="display:none" onchange="addReceipts(event)">
+        </label>
+      </div>
+    </div>
+    <div id="printDoc"></div>
+  </section>
+
+  <section id="tab-settings" class="hidden">
+    <div class="panel">
+      <h2>Laundry Space — Building Rental</h2>
+      <div class="form-grid">
+        <div class="inp"><label>Business owner</label><input id="setLaundryOwner"></div>
+        <div class="inp"><label>Care of (c/o)</label><input id="setLaundryCO"></div>
+        <div class="inp"><label>Monthly building rental (₱)</label><input id="setLaundryFee" type="number" min="0" step="50"></div>
+      </div>
+      <div class="actions-bar"><button class="btn solid" onclick="saveLaundry()">Save laundry details</button></div>
+    </div>
+    <div class="panel" id="pinPanel">
+      <h2>PIN Codes</h2>
+      <p class="desc">Only the Owner can change PINs.</p>
+      <div class="form-grid">
+        <div class="inp"><label>Mike Torres (Owner) PIN</label><input id="setOwnerPin" inputmode="numeric" maxlength="6"></div>
+        <div class="inp"><label>Ohara Torres (Manager) PIN</label><input id="setMgrPin" inputmode="numeric" maxlength="6"></div>
+      </div>
+      <div class="actions-bar"><button class="btn solid" onclick="savePins()">Update PINs</button></div>
+    </div>
+    <div class="panel">
+      <h2>✉ Reminder Message</h2>
+      <textarea id="setMsgTpl" style="width:100%;min-height:110px;padding:12px;border:1.5px solid var(--line);border-radius:10px;font-size:14px;background:#fff;color:var(--ink);resize:vertical"></textarea>
+      <p class="desc" style="margin-top:8px">Placeholders: <b>{name}</b>, <b>{amount}</b>, <b>{date}</b>, <b>{room}</b>, <b>{manager}</b></p>
+      <div class="actions-bar">
+        <button class="btn solid" onclick="saveMsgTpl()">Save message</button>
+        <button class="btn ghost" onclick="resetMsgTpl()">Reset to default</button>
+      </div>
+    </div>
+    <div class="panel">
+      <h2>☁ Cloud Sync</h2>
+      <p class="desc">Keep your computer and phone in step automatically.</p>
+      <div id="cloudConnected" class="hidden">
+        <div class="settle-box" style="background:var(--green-soft)">
+          <div class="sl" style="border:none"><span>Status</span><span id="cloudStatusBig" style="font-weight:800;color:var(--green)">Connected ✓</span></div>
+          <div class="sl" style="border:none"><span>Project</span><span id="cloudUrlShow" style="font-size:12px;color:var(--muted)"></span></div>
+        </div>
+        <div class="settle-actions">
+          <button class="btn solid small" onclick="syncNow()">🔄 Sync now</button>
+          <button class="btn danger small" onclick="cloudDisconnect()">Disconnect this device</button>
+        </div>
+      </div>
+      <div id="cloudDisconnected">
+        <div class="form-grid">
+          <div class="inp"><label>Supabase Project URL</label><input id="cfgUrl" placeholder="https://xxxxx.supabase.co"></div>
+          <div class="inp"><label>Supabase anon public key</label><input id="cfgKey" placeholder="eyJhbGciOi..."></div>
+        </div>
+        <div class="actions-bar"><button class="btn solid" onclick="cloudConnect()">Connect</button></div>
+      </div>
+      <p class="desc" id="cloudStatus" style="margin-top:10px"></p>
+    </div>
+    <div class="panel">
+      <h2>📘 July 2026 Ledger</h2>
+      <p class="desc">One-time entry of July 2026 book. Running profit after this entry: <b>₱51,969.66</b>.</p>
+      <div class="actions-bar">
+        <button class="btn solid" onclick="fillJuly2026()">Fill in July 2026 records</button>
+        <button class="btn ghost" onclick="fixGovCategories()">🔧 Fix government contribution categories</button>
+      </div>
+    </div>
+    <div class="panel">
+      <h2>📗 June 2026 Ledger</h2>
+      <p class="desc">One-time entry of the handwritten June 2026 book.</p>
+      <div class="actions-bar">
+        <button class="btn solid" onclick="fillJune2026()">Fill in June 2026 records</button>
+        <button class="btn ghost" onclick="seedContacts()">📞 Add contact numbers from book</button>
+      </div>
+      <p class="desc" id="juneStatus" style="margin-top:8px"></p>
+    </div>
+    <div class="panel">
+      <h2>Data</h2>
+      <div class="actions-bar">
+        <button class="btn ghost" onclick="exportData()">⬇ Export backup (.json)</button>
+        <label class="btn ghost" style="display:inline-flex;align-items:center">⬆ Import backup<input type="file" id="importFile" accept=".json" style="display:none" onchange="importData(event)"></label>
+        <button class="btn danger" onclick="wipeData()">Reset all data</button>
+      </div>
+      <div class="section-title">Copy / paste backup</div>
+      <div class="actions-bar">
+        <button class="btn solid" onclick="copyAllData()">📋 Copy all data</button>
+        <button class="btn ghost" onclick="loadPastedData()">📥 Load pasted data</button>
+      </div>
+      <textarea id="backupText" placeholder="Your data appears here after 'Copy all data'." style="width:100%;min-height:120px;margin-top:10px;padding:12px;border:1.5px solid var(--line);border-radius:10px;font-family:monospace;font-size:12px;background:#fff;color:var(--ink);resize:vertical"></textarea>
+    </div>
+  </section>
+</div>
+
+<div class="saved-flash" id="savedFlash">Saved ✓</div>
+
+<script>
+const KEY="mikes_lodging_house_v1";
+let memStore={};
+const storage={
+  get(){try{const r=localStorage.getItem(KEY);return r?JSON.parse(r):null;}catch(e){return memStore[KEY]||null;}},
+  set(obj){try{localStorage.setItem(KEY,JSON.stringify(obj));return true;}catch(e){memStore[KEY]=obj;return false;}}
+};
+function defaultData(){
+  return {
+    pins:{owner:"1111",manager:"2222"},
+    laundry:{owner:"Mr. Jose Go",co:"Netchie Gomisong",fee:0},
+    rooms:[{id:1,name:"Room 1",cap:2},{id:2,name:"Room 2",cap:2},{id:3,name:"Room 3",cap:2},{id:4,name:"Room 4",cap:2},{id:5,name:"Room 5",cap:1}],
+    lodgers:[],
+    months:{}
+  };
+}
+let data=storage.get()||defaultData();
+let session=null;
+let curMonth=ymNow();
+let editLodgerId=null;
+function persist(){data.updatedAt=new Date().toISOString();const ok=storage.set(data);flashSaved();cloudPushDebounced();return ok;}
+let flashT;
+function flashSaved(){const f=document.getElementById('savedFlash');f.classList.add('show');clearTimeout(flashT);flashT=setTimeout(()=>f.classList.remove('show'),1200);}
+function ymNow(){const d=new Date();return d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0");}
+function peso(n){n=Number(n)||0;return "₱"+n.toLocaleString("en-PH",{minimumFractionDigits:2,maximumFractionDigits:2});}
+function monthName(ym){const[y,m]=ym.split("-").map(Number);return new Date(y,m-1,1).toLocaleDateString("en-US",{month:"long",year:"numeric"});}
+function getMonth(ym){if(!data.months[ym])data.months[ym]={water:0,elec:0,rm:[],other:[],receipts:[]};const m=data.months[ym];if(!m.rm)m.rm=[];if(!m.other)m.other=[];if(!m.receipts)m.receipts=[];return m;}
+function activeLodgers(){return data.lodgers.filter(l=>l.status==="active");}
+function lodgerStartYM(l){return l.start?l.start.slice(0,7):null;}
+function lodgerCountsInMonth(l,ym){if(l.status!=="active")return false;const s=lodgerStartYM(l);return !s||s<=ym;}
+function lodgersForMonth(ym){return data.lodgers.filter(l=>lodgerCountsInMonth(l,ym));}
+function totalCap(){return data.rooms.reduce((s,r)=>s+r.cap,0);}
+function uid(){return Date.now().toString(36)+Math.random().toString(36).slice(2,6);}
+function monthLaundry(ym){const m=data.months[ym];if(m&&typeof m.laundry==="number")return m.laundry;return Number(data.laundry.fee)||0;}
+function setMonthLaundry(ym,val){
+  const old=Number(data.laundry.fee)||0;
+  Object.keys(data.months).forEach(k=>{const mm=data.months[k];if(k<ym&&(mm.laundry===undefined||mm.laundry===null))mm.laundry=old;});
+  getMonth(ym).laundry=val;data.laundry.fee=val;
+}
+function monthIncome(ym){
+  const m=getMonth(ym);const ticked=m.ticked||{};
+  const rent=activeLodgers().filter(l=>ticked[l.id]).reduce((s,l)=>s+(Number(l.fee)||0),0);
+  const laundry=(ticked['__laundry__']&&monthLaundry(ym)>0)?monthLaundry(ym):0;
+  const other=(m.other||[]).reduce((s,o)=>s+(Number(o.amt)||0),0);
+  return{rent,laundry,other,total:rent+laundry+other};
+}
+function monthExpense(ym){
+  const m=getMonth(ym);const util=(Number(m.water)||0)+(Number(m.elec)||0);
+  const govCats=["SSS contribution","Pag-ibig contribution","PhilHealth contribution"];
+  const gov=(m.rm||[]).filter(r=>govCats.includes(r.cat)).reduce((s,r)=>s+(Number(r.amt)||0),0);
+  const rm=(m.rm||[]).filter(r=>!govCats.includes(r.cat)).reduce((s,r)=>s+(Number(r.amt)||0),0);
+  return{water:Number(m.water)||0,elec:Number(m.elec)||0,gov,rm,total:util+gov+rm};
+}
+function monthNet(ym){return monthIncome(ym).total-monthExpense(ym).total;}
+function incomeOf(ym){
+  const m=data.months[ym];const ticked=m&&m.ticked?m.ticked:{};
+  const rent=activeLodgers().filter(l=>ticked[l.id]).reduce((s,l)=>s+(Number(l.fee)||0),0);
+  const laundry=(ticked['__laundry__']&&monthLaundry(ym)>0)?monthLaundry(ym):0;
+  const other=m&&m.other?m.other.reduce((s,o)=>s+(Number(o.amt)||0),0):0;
+  return{rent,laundry,other,total:rent+laundry+other};
+}
+function expenseOf(ym){
+  const m=data.months[ym];const water=m?(Number(m.water)||0):0,elec=m?(Number(m.elec)||0):0;
+  const govCats=["SSS contribution","Pag-ibig contribution","PhilHealth contribution"];
+  const gov=m&&m.rm?m.rm.filter(r=>govCats.includes(r.cat)).reduce((s,r)=>s+(Number(r.amt)||0),0):0;
+  const rm=m&&m.rm?m.rm.filter(r=>!govCats.includes(r.cat)).reduce((s,r)=>s+(Number(r.amt)||0),0):0;
+  return{water,elec,gov,rm,total:water+elec+gov+rm};
+}
+function netOf(ym){return incomeOf(ym).total-expenseOf(ym).total;}
+function cumulativeUpTo(ym){
+  const keys=Object.keys(data.months).filter(k=>k<=ym);
+  if(!keys.includes(ym))keys.push(ym);
+  let sum=0;keys.forEach(k=>sum+=netOf(k));return sum;
+}
+function grandTotal(){const set=new Set(Object.keys(data.months));set.add(curMonth);let s=0;set.forEach(k=>s+=netOf(k));return s;}
+function allMonthKeys(){const set=new Set(Object.keys(data.months));set.add(curMonth);return[...set].sort();}
+function totalDeposits(){return activeLodgers().reduce((s,l)=>s+(Number(l.deposit)||0),0);}
+
+function showLoginHint(){
+  const usingDefault=data.pins.owner==="1111"&&data.pins.manager==="2222";
+  document.getElementById('loginHint').innerHTML=usingDefault?"First time? Default PINs — Owner <b>1111</b>, Manager <b>2222</b>. Change them in Settings after you log in.":"Enter your PIN. Owner and Manager each have their own.";
+}
+function doLogin(){
+  const role=document.getElementById('loginRole').value;
+  const pin=document.getElementById('loginPin').value.trim();
+  const err=document.getElementById('loginErr');
+  const correct=role==="owner"?data.pins.owner:data.pins.manager;
+  if(pin===correct){
+    session=role;
+    document.getElementById('login').classList.add('hidden');
+    document.getElementById('app').classList.remove('hidden');
+    document.getElementById('whoLabel').textContent="Signed in as "+(role==="owner"?"Mike Torres (Owner)":"Ohara Torres (Manager)");
+    document.getElementById('pinPanel').style.display=role==="owner"?"block":"none";
+    err.textContent="";document.getElementById('loginPin').value="";
+    renderAll();startReminderLoop();
+    if(cloud.connected)cloudPull(true);
+  }else{err.textContent="Incorrect PIN. Please try again.";document.getElementById('loginPin').value="";}
+}
+function logout(){session=null;stopReminderLoop();document.getElementById('app').classList.add('hidden');document.getElementById('login').classList.remove('hidden');showLoginHint();}
+document.getElementById('loginPin').addEventListener('keydown',e=>{if(e.key==="Enter")doLogin();});
+
+function showTab(t){
+  ["dash","lodgers","monthly","year","print","settings"].forEach(x=>{document.getElementById("tab-"+x).classList.toggle("hidden",x!==t);});
+  document.querySelectorAll("nav.tabs button").forEach(b=>b.classList.toggle("active",b.dataset.tab===t));
+  if(t==="monthly")renderMonthly();if(t==="dash")renderDash();if(t==="lodgers")renderLodgers();
+  if(t==="year")renderYear();if(t==="print")renderPrint();if(t==="settings")renderSettings();
+}
+
+function renderDash(){
+  const act=activeLodgers(),cap=totalCap(),vacant=cap-act.length;
+  const inc=monthIncome(curMonth),exp=monthExpense(curMonth),net=monthNet(curMonth);
+  document.getElementById('dashKpis').innerHTML=`
+    <div class="kpi"><div class="label">Total Lodgers</div><div class="val">${act.length}<span style="font-size:14px;color:var(--muted)"> / ${cap}</span></div></div>
+    <div class="kpi ${vacant>0?'gold':''}"><div class="label">Vacant Beds</div><div class="val">${vacant}</div></div>
+    <div class="kpi green"><div class="label">This Month Income</div><div class="val small">${peso(inc.total)}</div></div>
+    <div class="kpi red"><div class="label">This Month Expenses</div><div class="val small">${peso(exp.total)}</div></div>
+    <div class="kpi ${net>=0?'green':'red'}"><div class="label">This Month Net</div><div class="val small">${peso(net)}</div></div>
+    <div class="kpi brand"><div class="label">Overall Total Profit</div><div class="val small">${peso(grandTotal())}</div></div>`;
+  const grid=document.getElementById('roomGrid');
+  grid.innerHTML=data.rooms.map(r=>{
+    const occ=act.filter(l=>Number(l.room)===r.id);
+    let badgeCls="empty",badgeTxt="Vacant";
+    if(occ.length>=r.cap){badgeCls="full";badgeTxt="Full";}else if(occ.length>0){badgeCls="part";badgeTxt=occ.length+"/"+r.cap;}
+    let slots="";
+    for(let i=0;i<r.cap;i++){
+      if(occ[i])slots+=`<div class="slot filled"><span class="dot"></span><span>${esc(occ[i].name)}</span><span class="fee">${peso(occ[i].fee)}</span></div>`;
+      else slots+=`<div class="slot vacant"><span class="dot"></span><span>Vacant bed</span></div>`;
+    }
+    return`<div class="room"><div class="rhead"><span class="rname">${r.name}</span><span class="badge ${badgeCls}">${badgeTxt}</span></div>${slots}</div>`;
+  }).join("");
+  const keys=allMonthKeys().filter(k=>data.months[k]&&(
+    (data.months[k].other&&data.months[k].other.length>0)||(data.months[k].rm&&data.months[k].rm.length>0)||
+    (data.months[k].ticked&&Object.keys(data.months[k].ticked).length>0)||Number(data.months[k].water)||Number(data.months[k].elec)
+  ));
+  let running=0;
+  const rows=keys.map(k=>{const i=monthIncome(k).total,e=monthExpense(k).total,n=i-e;running+=n;
+    return`<tr><td><b>${monthName(k)}</b>${k===curMonth?' <span class="pill">current</span>':''}</td><td class="num money-in">${peso(i)}</td><td class="num money-out">${peso(e)}</td><td class="num" style="font-weight:700;color:${n>=0?'var(--green)':'var(--red)'}">${peso(n)}</td><td class="num" style="font-weight:800">${peso(running)}</td></tr>`;
+  }).join("");
+  document.getElementById('historyTable').innerHTML=`<thead><tr><th>Month</th><th class="num">Income</th><th class="num">Expenses</th><th class="num">Net</th><th class="num">Running Profit</th></tr></thead><tbody>${rows||'<tr><td colspan="5" class="empty-state">No months recorded yet.</td></tr>'}</tbody>`;
+}
+
+function roomOptions(sel){
+  return data.rooms.map(r=>{const occ=activeLodgers().filter(l=>Number(l.room)===r.id&&l.id!==editLodgerId).length;const full=occ>=r.cap;
+    return`<option value="${r.id}" ${sel==r.id?'selected':''} ${full&&sel!=r.id?'disabled':''}>${r.name} (${occ}/${r.cap})${full&&sel!=r.id?' — full':''}</option>`;
+  }).join("");
+}
+function renderLodgers(){
+  document.getElementById('lgRoom').innerHTML=roomOptions(document.getElementById('lgRoom').value);
+  const rows=data.lodgers.map(l=>{
+    const room=data.rooms.find(r=>r.id==l.room);const day=dueDay(l);
+    return`<tr style="${l.status==='out'?'opacity:.5':''}">
+      <td><b>${esc(l.name)}</b>${l.address?`<div class="rmeta">${esc(l.address)}</div>`:''}</td>
+      <td>${l.phone?`<a class="call" style="text-decoration:none" href="tel:${esc(l.phone)}">${esc(l.phone)}</a>`:'<span style="color:var(--muted)">—</span>'}</td>
+      <td>${room?room.name:'—'}</td><td class="num">${peso(l.fee)}</td>
+      <td>${l.start?new Date(l.start).toLocaleDateString("en-US",{year:'numeric',month:'short',day:'numeric'}):'—'}</td>
+      <td>${day?'day '+day+' monthly':'—'}</td><td class="num">${peso(l.deposit)}</td>
+      <td>${l.status==='active'?'<span class="pill" style="background:var(--green-soft);color:var(--green)">Active</span>':'<span class="pill" style="background:var(--red-soft);color:var(--red)">Out</span>'}</td>
+      <td><div class="row-actions">
+        ${l.phone&&l.status==='active'?`<button class="btn ghost small" onclick="sendReminder('${l.id}')">✉</button>`:''}
+        <button class="btn ghost small" onclick="editLodger('${l.id}')">Edit</button>
+        <button class="btn danger small" onclick="delLodger('${l.id}')">Del</button>
+      </div></td></tr>`;
+  }).join("");
+  document.getElementById('lodgerTable').innerHTML=`<thead><tr><th>Name</th><th>Contact</th><th>Room</th><th class="num">Rent</th><th>Started</th><th>Due</th><th class="num">Deposit</th><th>Status</th><th></th></tr></thead><tbody>${rows||'<tr><td colspan="9" class="empty-state"><div class="big">🛏️</div>No lodgers yet.</td></tr>'}</tbody>`;
+  populateSettlementLodgers();
+}
+function saveLodger(){
+  const name=document.getElementById('lgName').value.trim();if(!name){alert("Please enter the lodger's name.");return;}
+  const rec={id:editLodgerId||uid(),name,phone:document.getElementById('lgPhone').value.trim(),address:document.getElementById('lgAddress').value.trim(),
+    room:Number(document.getElementById('lgRoom').value),fee:Number(document.getElementById('lgFee').value)||0,
+    start:document.getElementById('lgStart').value,deposit:Number(document.getElementById('lgDeposit').value)||0,status:document.getElementById('lgStatus').value};
+  if(editLodgerId){const i=data.lodgers.findIndex(l=>l.id===editLodgerId);data.lodgers[i]=rec;}else data.lodgers.push(rec);
+  editLodgerId=null;persist();clearLodgerForm();renderLodgers();
+}
+function editLodger(id){
+  const l=data.lodgers.find(x=>x.id===id);if(!l)return;editLodgerId=id;
+  document.getElementById('lodgerFormTitle').textContent="Edit Lodger";document.getElementById('lgSaveBtn').textContent="Save changes";document.getElementById('lgCancelBtn').classList.remove('hidden');
+  document.getElementById('lgName').value=l.name;document.getElementById('lgPhone').value=l.phone||"";document.getElementById('lgAddress').value=l.address||"";
+  document.getElementById('lgRoom').innerHTML=roomOptions(l.room);document.getElementById('lgFee').value=l.fee;document.getElementById('lgStart').value=l.start||"";
+  document.getElementById('lgDeposit').value=l.deposit;document.getElementById('lgStatus').value=l.status;
+  window.scrollTo({top:document.getElementById('lodgerFormTitle').offsetTop-20,behavior:'smooth'});
+}
+function cancelLodgerEdit(){editLodgerId=null;clearLodgerForm();renderLodgers();}
+function clearLodgerForm(){
+  document.getElementById('lodgerFormTitle').textContent="Add Lodger";document.getElementById('lgSaveBtn').textContent="Add lodger";document.getElementById('lgCancelBtn').classList.add('hidden');
+  ['lgName','lgPhone','lgAddress','lgFee','lgStart','lgDeposit'].forEach(id=>document.getElementById(id).value="");document.getElementById('lgStatus').value="active";
+}
+function delLodger(id){const l=data.lodgers.find(x=>x.id===id);if(confirm("Remove "+(l?l.name:"this lodger")+" from the records?")){data.lodgers=data.lodgers.filter(x=>x.id!==id);persist();renderLodgers();renderDash();renderReminders();}}
+
+function changeMonth(dir){const[y,m]=curMonth.split("-").map(Number);const d=new Date(y,m-1+dir,1);curMonth=d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0");renderMonthly();}
+function jumpMonth(v){if(!/^\d{4}-\d{2}$/.test(v))return;curMonth=v;renderMonthly();renderPrint();}
+let curYear=new Date().getFullYear();
+function changeYear(d){curYear+=d;renderYear();}
+function openMonth(ym){curMonth=ym;renderMonthly();renderPrint();showTab('monthly');}
+function renderYear(){
+  document.getElementById('yearLabel').textContent=curYear;
+  const MN=["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+  let yInc=0,yExp=0,rows="";
+  for(let i=0;i<12;i++){
+    const ym=curYear+"-"+String(i+1).padStart(2,"0");
+    const inc=incomeOf(ym).total,exp=expenseOf(ym).total,net=inc-exp,bal=cumulativeUpTo(ym);yInc+=inc;yExp+=exp;
+    const active=(inc||exp);
+    rows+=`<tr style="cursor:pointer${active?'':';opacity:.55'}" onclick="openMonth('${ym}')">
+      <td><b>${MN[i]} ${curYear}</b>${ym===curMonth?' <span class="pill">current</span>':''}</td>
+      <td class="num money-in">${inc?peso(inc):'—'}</td><td class="num money-out">${exp?peso(exp):'—'}</td>
+      <td class="num" style="font-weight:700;color:${net>=0?'var(--green)':'var(--red)'}">${active?peso(net):'—'}</td>
+      <td class="num" style="font-weight:800">${peso(bal)}</td></tr>`;
+  }
+  const yNet=yInc-yExp,endBal=cumulativeUpTo(curYear+"-12");
+  document.getElementById('yearTable').innerHTML=`<thead><tr><th>Month</th><th class="num">Income</th><th class="num">Expenses</th><th class="num">Net</th><th class="num">Running Balance</th></tr></thead><tbody>${rows}</tbody><tfoot><tr style="border-top:2px solid var(--line)"><td><b>${curYear} total</b></td><td class="num money-in"><b>${peso(yInc)}</b></td><td class="num money-out"><b>${peso(yExp)}</b></td><td class="num"><b style="color:${yNet>=0?'var(--green)':'var(--red)'}">${peso(yNet)}</b></td><td class="num"><b>${peso(endBal)}</b></td></tr></tfoot>`;
+  document.getElementById('yearKpis').innerHTML=`<div class="kpi green"><div class="label">${curYear} Income</div><div class="val small">${peso(yInc)}</div></div><div class="kpi red"><div class="label">${curYear} Expenses</div><div class="val small">${peso(yExp)}</div></div><div class="kpi ${yNet>=0?'green':'red'}"><div class="label">${curYear} Net</div><div class="val small">${peso(yNet)}</div></div><div class="kpi brand"><div class="label">Balance end of ${curYear}</div><div class="val small">${peso(endBal)}</div></div>`;
+}
+
+function renderMonthly(){
+  document.getElementById('monthLabel').textContent=monthName(curMonth);
+  const mj=document.getElementById('monthJump');if(mj)mj.value=curMonth;
+  const m=getMonth(curMonth);
+  document.getElementById('exWater').value=m.water||"";document.getElementById('exElec').value=m.elec||"";document.getElementById('mlLaundry').value=monthLaundry(curMonth)||"";
+  renderTicker();renderGovTable();autoFillGovNote();
+  const inc=monthIncome(curMonth),exp=monthExpense(curMonth),net=monthNet(curMonth);
+  document.getElementById('monthKpis').innerHTML=`<div class="kpi green"><div class="label">Income</div><div class="val small">${peso(inc.total)}</div></div><div class="kpi red"><div class="label">Expenses</div><div class="val small">${peso(exp.total)}</div></div><div class="kpi ${net>=0?'green':'red'}"><div class="label">Net This Month</div><div class="val small">${peso(net)}</div></div><div class="kpi brand"><div class="label">Running Profit (to date)</div><div class="val small">${peso(cumulativeUpTo(curMonth))}</div></div>`;
+  let incRows="";
+  if(monthLaundry(curMonth)>0)incRows+=`<tr><td>${esc(data.laundry.owner)} <span class="pill laundry">Laundry space</span></td><td>Building rental (c/o ${esc(data.laundry.co)})</td><td class="num money-in">${peso(monthLaundry(curMonth))}</td></tr>`;
+  (m.other||[]).forEach((o,i)=>{incRows+=`<tr><td>${esc(o.desc)||'Payment / income'}</td><td>Manual entry</td><td class="num money-in">${peso(o.amt)} <button class="btn danger small" onclick="delOtherIncome(${i})">✕</button></td></tr>`;});
+  if(!incRows)incRows=`<tr><td colspan="3" class="empty-state">No income recorded yet.</td></tr>`;
+  document.getElementById('incomeTable').innerHTML=`<thead><tr><th>Source / Description</th><th>Type</th><th class="num">Amount</th></tr></thead><tbody>${incRows}</tbody>`;
+  const govCatsSet=new Set(["SSS contribution","Pag-ibig contribution","PhilHealth contribution"]);
+  const rmRows=(m.rm||[]).map((r,i)=>({r,i})).filter(({r})=>!govCatsSet.has(r.cat)).map(({r,i})=>`<tr><td><b>${esc(r.cat)}</b></td><td>${esc(r.note)||'—'}</td><td class="num money-out">${peso(r.amt)}</td><td class="num"><button class="btn danger small" onclick="delRM(${i})">✕</button></td></tr>`).join("");
+  document.getElementById('rmTable').innerHTML=`<thead><tr><th>Type of work</th><th>Note</th><th class="num">Amount</th><th></th></tr></thead><tbody>${rmRows||'<tr><td colspan="4" class="empty-state">No repair or maintenance costs this month.</td></tr>'}</tbody>`;
+  renderSummaryOnly();
+  document.getElementById('depositNote').innerHTML=`🔒 Deposits held (refundable, not income): <b>${peso(totalDeposits())}</b> across active lodgers.`;
+}
+function saveUtilities(){
+  const m=getMonth(curMonth);m.water=Number(document.getElementById('exWater').value)||0;m.elec=Number(document.getElementById('exElec').value)||0;
+  persist();renderSummaryOnly();
+}
+function renderSummaryOnly(){
+  const inc=monthIncome(curMonth),exp=monthExpense(curMonth),net=monthNet(curMonth);
+  document.getElementById('monthSummary').innerHTML=`
+    <div class="summary-line"><span class="lbl">Rent collected (ticked lodgers)</span><span class="money-in">${peso(inc.rent)}</span></div>
+    <div class="summary-line"><span class="lbl">Laundry building rental</span><span class="money-in">${peso(inc.laundry)}</span></div>
+    <div class="summary-line"><span class="lbl">Other income</span><span class="money-in">${peso(inc.other)}</span></div>
+    <div class="summary-line"><span class="lbl">💧 Water bill</span><span class="money-out">− ${peso(exp.water)}</span></div>
+    <div class="summary-line"><span class="lbl">⚡ Electrical bill</span><span class="money-out">− ${peso(exp.elec)}</span></div>
+    <div class="summary-line"><span class="lbl">🏛 Government contributions</span><span class="money-out">− ${peso(exp.gov)}</span></div>
+    <div class="summary-line"><span class="lbl">🔧 Repair & maintenance</span><span class="money-out">− ${peso(exp.rm)}</span></div>
+    <div class="summary-line total"><span>NET INCOME (${monthName(curMonth)})</span><span style="color:${net>=0?'var(--green)':'var(--red)'}">${peso(net)}</span></div>
+    <div class="summary-line total" style="font-size:15px"><span>Carried over → OVERALL TOTAL PROFIT</span><span style="color:var(--brand)">${peso(cumulativeUpTo(curMonth))}</span></div>`;
+}
+function quarterLabel(ym){const[y,m]=ym.split("-").map(Number);const q=Math.ceil(m/3);const starts=[0,1,4,7,10];const ends=[0,3,6,9,12];const mn=["","Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];return mn[starts[q]]+"–"+mn[ends[q]]+" "+y;}
+function autoFillGovNote(){
+  const cat=document.getElementById('govCat').value;const note=document.getElementById('govNote');
+  const mn=new Date(new Date().getFullYear(),new Date().getMonth(),1).toLocaleDateString("en-US",{month:"long",year:"numeric"});
+  if(cat==="SSS contribution")note.value="Mike's SSS contribution — "+mn;
+  else if(cat==="Pag-ibig contribution")note.value="Pag-ibig — "+quarterLabel(curMonth);
+  else if(cat==="PhilHealth contribution")note.value="PhilHealth — "+quarterLabel(curMonth);
+}
+function addGov(){const cat=document.getElementById('govCat').value;const note=document.getElementById('govNote').value.trim();const amt=Number(document.getElementById('govAmt').value)||0;if(amt<=0){alert("Enter the amount.");return;}getMonth(curMonth).rm.push({cat,note,amt});document.getElementById('govNote').value="";document.getElementById('govAmt').value="";persist();renderMonthly();}
+function renderGovTable(){
+  const m=getMonth(curMonth);const govCats=["SSS contribution","Pag-ibig contribution","PhilHealth contribution"];
+  const govItems=(m.rm||[]).filter(r=>govCats.includes(r.cat));
+  const rows=govItems.map(r=>{const realIdx=(m.rm||[]).indexOf(r);return`<tr><td><b>${esc(r.cat)}</b></td><td>${esc(r.note)||'—'}</td><td class="num money-out">${peso(r.amt)}</td><td class="num"><button class="btn danger small" onclick="delRM(${realIdx})">✕</button></td></tr>`;}).join("");
+  const el=document.getElementById('govTable');if(el)el.innerHTML=`<thead><tr><th>Contribution</th><th>Note</th><th class="num">Amount</th><th></th></tr></thead><tbody>${rows||'<tr><td colspan="4" class="empty-state">No government contributions this month.</td></tr>'}</tbody>`;
+}
+function addRM(){const cat=document.getElementById('rmCat').value;const note=document.getElementById('rmNote').value.trim();const amt=Number(document.getElementById('rmAmt').value)||0;if(amt<=0){alert("Enter an amount.");return;}getMonth(curMonth).rm.push({cat,note,amt});document.getElementById('rmNote').value="";document.getElementById('rmAmt').value="";persist();renderMonthly();}
+function delRM(i){getMonth(curMonth).rm.splice(i,1);persist();renderMonthly();}
+function addOtherIncome(){const desc=document.getElementById('oiDesc').value.trim();const amt=Number(document.getElementById('oiAmt').value)||0;if(amt<=0){alert("Enter an amount.");return;}getMonth(curMonth).other.push({desc,amt});document.getElementById('oiDesc').value="";document.getElementById('oiAmt').value="";persist();renderMonthly();}
+function delOtherIncome(i){getMonth(curMonth).other.splice(i,1);persist();renderMonthly();}
+function saveMonthLaundry(){const val=Number(document.getElementById('mlLaundry').value)||0;setMonthLaundry(curMonth,val);persist();renderMonthly();}
+
+/* ============================================================
+   DUE DATES · REMINDERS
+   ▸ FIX: getDueGroups now checks the paid ticker — if a lodger
+     is already ticked as paid in the month their due date falls
+     in, they are automatically removed from all reminder panels.
+   ============================================================ */
+function peso2(n){n=Number(n)||0;return "₱"+n.toLocaleString("en-PH",{minimumFractionDigits:2,maximumFractionDigits:2});}
+function daysInMonthYM(ym){const[y,m]=ym.split("-").map(Number);return new Date(y,m,0).getDate();}
+function dueDay(l){if(!l.start)return null;return new Date(l.start).getDate();}
+function occInMonth(day,y,mi){const last=new Date(y,mi+1,0).getDate();return new Date(y,mi,Math.min(day,last));}
+function nextDueDate(l,from){
+  from=from||new Date();const day=dueDay(l);if(day==null)return null;
+  const f=new Date(from.getFullYear(),from.getMonth(),from.getDate());
+  let c=occInMonth(day,f.getFullYear(),f.getMonth());
+  if(c<f)c=occInMonth(day,f.getFullYear(),f.getMonth()+1);
+  return c;
+}
+function daysUntilDate(date,from){
+  from=from||new Date();
+  const a=new Date(from.getFullYear(),from.getMonth(),from.getDate());
+  const b=new Date(date.getFullYear(),date.getMonth(),date.getDate());
+  return Math.round((b-a)/86400000);
+}
+function ymd(d){return d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0");}
+
+function getDueGroups(){
+  const now=new Date();const g={today:[],tmrw:[],week:[]};
+  activeLodgers().forEach(l=>{
+    const due=nextDueDate(l,now);if(!due)return;
+    // ── PAID-TICKER CHECK ──────────────────────────────────────────────────────
+    // If the lodger is already ticked as paid in the month their due date falls
+    // in, they are fully settled for this cycle — skip the reminder entirely.
+    const dueYM=due.getFullYear()+"-"+String(due.getMonth()+1).padStart(2,"0");
+    const ticked=(data.months[dueYM]&&data.months[dueYM].ticked)||{};
+    if(ticked[l.id])return;   // already paid this cycle → no reminder shown
+    // ──────────────────────────────────────────────────────────────────────────
+    const du=daysUntilDate(due,now);const item={l,due,du};
+    if(du===0)g.today.push(item);else if(du===1)g.tmrw.push(item);else if(du<=7)g.week.push(item);
+  });
+  g.week.sort((a,b)=>a.du-b.du);
+  return g;
+}
+
+function scrollToReminders(){const p=document.getElementById('reminderPanel');if(p)p.scrollIntoView({behavior:'smooth'});}
+function renderTicker(){
+  const m=getMonth(curMonth);if(!m.ticked)m.ticked={};
+  const lodgers=activeLodgers();const laundryFee=monthLaundry(curMonth);
+  let html="";
+  lodgers.forEach(l=>{
+    const paid=!!m.ticked[l.id];const room=data.rooms.find(r=>r.id==l.room);
+    html+=`<div class="ticker-item${paid?' paid':''}" onclick="toggleTick('${l.id}')">
+      <div class="ticker-cb">${paid?'✓':''}</div>
+      <div><div class="t-name">${esc(l.name)}</div><div class="t-meta">${room?room.name:'—'} · due day ${dueDay(l)||'?'} · ${paid?'<span style="color:var(--green)">Paid ✓</span>':'<span style="color:var(--muted)">Not yet paid</span>'}</div></div>
+      <div class="t-amt">${paid?peso(l.fee):'₱'+Number(l.fee).toLocaleString("en-PH",{minimumFractionDigits:2})}</div></div>`;
+  });
+  if(laundryFee>0||data.laundry.owner){
+    const lpaid=!!m.ticked['__laundry__'];
+    html+=`<div class="ticker-item${lpaid?' paid':''}" onclick="toggleTick('__laundry__')" style="border-style:dashed">
+      <div class="ticker-cb">${lpaid?'✓':''}</div>
+      <div><div class="t-name">${esc(data.laundry.owner)} <span class="pill laundry">Laundry</span></div><div class="t-meta">c/o ${esc(data.laundry.co)} · ${lpaid?'<span style="color:var(--green)">Paid ✓</span>':'<span style="color:var(--muted)">Not yet paid</span>'}</div></div>
+      <div class="t-amt">${lpaid?peso(laundryFee):'₱'+Number(laundryFee).toLocaleString("en-PH",{minimumFractionDigits:2})}</div></div>`;
+  }
+  const el=document.getElementById('tickerList');if(el)el.innerHTML=html||'<p class="desc">No active lodgers yet.</p>';
+}
+function toggleTick(id){
+  const m=getMonth(curMonth);if(!m.ticked)m.ticked={};
+  m.ticked[id]=!m.ticked[id];persist();renderTicker();
+  const inc=monthIncome(curMonth),exp=monthExpense(curMonth),net=monthNet(curMonth);
+  document.getElementById('monthKpis').children[0].querySelector('.val').textContent=peso(inc.total);
+  document.getElementById('monthKpis').children[2].querySelector('.val').textContent=peso(net);
+  document.getElementById('monthKpis').children[3].querySelector('.val').textContent=peso(cumulativeUpTo(curMonth));
+  renderSummaryOnly();
+  // refresh reminders in background so bell badge updates immediately
+  renderReminders();
+}
+function renderReminders(){
+  const p=document.getElementById('reminderPanel');if(!p)return;
+  const g=getDueGroups();
+  const badge=document.getElementById('bellBadge');
+  const cnt=g.today.length+g.tmrw.length;
+  if(cnt>0){badge.textContent=cnt;badge.classList.remove('hidden');}else badge.classList.add('hidden');
+  const perm=("Notification" in window)?Notification.permission:"unsupported";
+  let notifBtn;
+  if(perm==="granted")notifBtn=`<button class="notif-btn notif-on" onclick="testNotify()">🔔 8am alerts ON · test</button>`;
+  else if(perm==="unsupported")notifBtn=`<span style="font-size:12px;color:var(--muted)">Desktop alerts not supported here</span>`;
+  else notifBtn=`<button class="notif-btn" onclick="enableNotifications()">🔔 Enable 8am desktop alerts</button>`;
+  const item=(it,cls)=>{
+    const l=it.l;const room=data.rooms.find(r=>r.id==l.room);
+    const dd=it.due.toLocaleDateString("en-US",{month:"short",day:"numeric"});
+    const label=it.du===0?"Due TODAY":it.du===1?"Due TOMORROW":("Due in "+it.du+" days");
+    return`<div class="rem-item ${cls}">
+      <div><div class="rn">${esc(l.name)}</div><div class="rmeta">${label} · ${dd}${room?' · '+room.name:''} · ${peso(l.fee)}</div></div>
+      <div class="spacer2"></div>
+      ${l.phone?`<a class="call" href="tel:${esc(l.phone)}">📞 ${esc(l.phone)}</a><button class="call smsbtn" onclick="sendReminder('${l.id}')">✉ Remind</button>`:'<span class="rmeta">no number</span>'}
+    </div>`;
+  };
+  let body="";
+  if(g.today.length)body+=`<div class="rem-group"><div class="gt" style="color:var(--red)">Due today</div>${g.today.map(i=>item(i,'today')).join("")}</div>`;
+  if(g.tmrw.length)body+=`<div class="rem-group"><div class="gt" style="color:var(--gold)">Due tomorrow</div>${g.tmrw.map(i=>item(i,'tmrw')).join("")}</div>`;
+  if(g.week.length)body+=`<div class="rem-group"><div class="gt" style="color:var(--muted)">Coming this week</div>${g.week.map(i=>item(i,'')).join("")}</div>`;
+  if(!body)body=`<div class="rem-empty">No rent due today, tomorrow, or in the next 7 days — all caught up! 👍</div>`;
+  p.innerHTML=`<div class="rem-head"><h2 style="margin:0">🔔 Rent Reminders</h2>${notifBtn}</div>
+     <p class="desc" style="margin:2px 0 0">For Ohara — each lodger is due on the day of the month they started. Reminders auto-dismiss when you tick them as Paid in Monthly Ledger.</p>
+     ${body}`;
+}
+function enableNotifications(){if(!("Notification" in window)){alert("This browser doesn't support desktop notifications.");return;}Notification.requestPermission().then(pm=>{renderReminders();if(pm==="granted"){try{new Notification("Reminders on ✓",{body:"You'll get an 8am alert on each lodger's due date while the app is open."});}catch(e){}checkReminders();}});}
+function testNotify(){try{new Notification("Test — Mike's Lodging House",{body:"Example: Maria is due TOMORROW. Contact: 0917 123 4567"});}catch(e){alert("Could not show a notification.");}}
+let reminderTimer=null;
+function startReminderLoop(){checkReminders();if(reminderTimer)clearInterval(reminderTimer);reminderTimer=setInterval(checkReminders,60000);}
+function stopReminderLoop(){if(reminderTimer)clearInterval(reminderTimer);reminderTimer=null;}
+function checkReminders(){
+  if(!session)return;if(!data.notifyLog)data.notifyLog={};
+  const now=new Date();const today=ymd(now);let changed=false;
+  Object.keys(data.notifyLog).forEach(k=>{if(!k.startsWith(today)){delete data.notifyLog[k];changed=true;}});
+  const canNotify=("Notification" in window)&&Notification.permission==="granted";
+  if(canNotify&&now.getHours()>=8){
+    activeLodgers().forEach(l=>{
+      const due=nextDueDate(l,now);if(!due)return;
+      const du=daysUntilDate(due,now);
+      if(du===0||du===1){
+        // also skip 8am notification if already paid
+        const dueYM=due.getFullYear()+"-"+String(due.getMonth()+1).padStart(2,"0");
+        const ticked=(data.months[dueYM]&&data.months[dueYM].ticked)||{};
+        if(ticked[l.id])return;
+        const key=today+"|"+l.id+"|"+du;
+        if(!data.notifyLog[key]){
+          const when=du===0?"is due TODAY":"is due TOMORROW";
+          const dd=due.toLocaleDateString("en-US",{month:"short",day:"numeric"});
+          try{new Notification("Rent reminder — Mike's Lodging House",{body:`${l.name} ${when} (${dd}). Contact: ${l.phone||"no number on file"}`});}catch(e){}
+          data.notifyLog[key]=true;changed=true;
+        }
+      }
+    });
+  }
+  if(changed)storage.set(data);renderReminders();
+}
+
+function populateSettlementLodgers(){
+  const sel=document.getElementById('stLodger');if(!sel)return;
+  const cur=sel.value;sel.innerHTML=data.lodgers.length?data.lodgers.map(l=>`<option value="${l.id}">${esc(l.name)}${l.status==='out'?' (out)':''}</option>`).join(""):`<option value="">No lodgers yet</option>`;
+  if(cur&&data.lodgers.some(l=>l.id===cur))sel.value=cur;calcSettlement();
+}
+function calcSettlement(){
+  const box=document.getElementById('settlementResult');if(!box)return;
+  const l=data.lodgers.find(x=>x.id===document.getElementById('stLodger').value);
+  const mode=document.getElementById('stMode').value;
+  document.getElementById('stDaysWrap').style.display=mode==='ext'?'flex':'none';
+  document.getElementById('stRefWrap').style.display=mode==='ext'?'flex':'none';
+  if(!l){box.innerHTML='';return;}
+  const day=dueDay(l);
+  if(mode==='out'){
+    const rent=Number(l.fee)||0,dep=Number(l.deposit)||0,bal=rent-dep;
+    let last;
+    if(bal>0)last=`<div class="sl big"><span>Balance to still collect</span><span>${peso(bal)}</span></div>`;
+    else if(bal<0)last=`<div class="sl big"><span>Refund to lodger</span><span>${peso(-bal)}</span></div>`;
+    else last=`<div class="sl big"><span>Fully covered — nothing to collect</span><span>${peso(0)}</span></div>`;
+    box.innerHTML=`<div class="settle-box"><div class="sl"><span>Rental cycle</span><span>${day?'day '+day+' → day '+day+' next month':'set a start date first'}</span></div><div class="sl"><span>Last month's rent</span><span>${peso(rent)}</span></div><div class="sl"><span>Deposit applied</span><span>− ${peso(Math.min(dep,rent))}</span></div>${dep>rent?`<div class="sl"><span>Deposit remainder (refundable)</span><span>${peso(dep-rent)}</span></div>`:''} ${last}<div class="settle-actions"><button class="btn ghost small" onclick="markMovedOut('${l.id}')">Mark ${esc(l.name)} as moved out</button></div></div>`;
+  }else{
+    const rm=document.getElementById('stRefMonth');if(!rm.value)rm.value=curMonth;
+    const ym=rm.value;const rent=Number(l.fee)||0,days=daysInMonthYM(ym);
+    const n=Math.max(0,Number(document.getElementById('stDays').value)||0);
+    const daily=days?rent/days:0,total=Math.round(daily*n);
+    box.innerHTML=`<div class="settle-box"><div class="sl"><span>Monthly rent</span><span>${peso(rent)}</span></div><div class="sl"><span>Days in ${monthName(ym)}</span><span>${days}</span></div><div class="sl"><span>Daily rate</span><span>${peso2(daily)} / day</span></div><div class="sl"><span>Extension</span><span>${n} day(s)</span></div><div class="sl big"><span>Amount to collect</span><span>${peso(total)}</span></div><div class="settle-actions"><button class="btn solid small" onclick="postExtension('${l.id}','${ym}',${n},${total})">Add ${peso(total)} to ${monthName(ym)} income</button></div></div>`;
+  }
+}
+function markMovedOut(id){const l=data.lodgers.find(x=>x.id===id);if(!l)return;if(confirm("Mark "+l.name+" as moved out?")){l.status='out';persist();renderLodgers();renderDash();renderReminders();}}
+function postExtension(id,ym,n,amt){const l=data.lodgers.find(x=>x.id===id);if(!l)return;getMonth(ym).other.push({desc:`Extension: ${l.name} ${n} day(s)`,amt});persist();alert(peso(amt)+" added to "+monthName(ym)+" income.");if(ym===curMonth)renderMonthly();}
+
+function prevMonthKey(ym){const[y,m]=ym.split("-").map(Number);const d=new Date(y,m-2,1);return d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0");}
+function changePrintMonth(dir){const[y,m]=curMonth.split("-").map(Number);const d=new Date(y,m-1+dir,1);curMonth=d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0");renderPrint();}
+function fmtDate(s){return s?new Date(s).toLocaleDateString("en-US",{year:"numeric",month:"long",day:"numeric"}):"—";}
+function renderPrint(){
+  document.getElementById('printMonthLabel').textContent=monthName(curMonth);
+  const pj=document.getElementById('printMonthJump');if(pj)pj.value=curMonth;
+  const m=getMonth(curMonth);const inc=monthIncome(curMonth),exp=monthExpense(curMonth),net=monthNet(curMonth);
+  const running=cumulativeUpTo(curMonth);const carried=running-net;const prevYM=prevMonthKey(curMonth);
+  const lodgers=lodgersForMonth(curMonth);const cap=totalCap();
+  let lodgerRows=lodgers.map(l=>{const room=data.rooms.find(r=>r.id==l.room);const day=dueDay(l);return`<tr><td><b>${esc(l.name)}</b></td><td>${esc(l.phone)||'—'}</td><td>${room?room.name:'—'}</td><td>${fmtDate(l.start)}</td><td>${day?'day '+day:'—'}</td><td class="num">${peso(l.fee)}</td><td class="num">${peso(l.deposit)}</td></tr>`;}).join("");
+  if(!lodgerRows)lodgerRows=`<tr><td colspan="7" style="text-align:center;color:var(--muted)">No lodgers recorded.</td></tr>`;
+  let rmRows=(m.rm||[]).map(r=>`<tr><td>${esc(r.cat)}</td><td>${esc(r.note)||'—'}</td><td class="num">${peso(r.amt)}</td></tr>`).join("");
+  if(!rmRows)rmRows=`<tr><td colspan="3" style="text-align:center;color:var(--muted)">No repair or maintenance costs this month.</td></tr>`;
+  const otherRows=(m.other||[]).map(o=>`<div class="pd-line"><span class="l">${esc(o.desc)||'Other income'}</span><span class="pos">${peso(o.amt)}</span></div>`).join("");
+  let receipts="";
+  if((m.receipts||[]).length){receipts=`<div class="pd-sec"><h3>Attached Bills & Receipts</h3><div class="pd-receipts">`+m.receipts.map((r,i)=>`<div class="pd-receipt"><button class="rm no-print" onclick="delReceipt(${i})">✕</button><img src="${r.url}" alt="${esc(r.name)}"><div class="cap">${esc(r.name)}</div></div>`).join("")+`</div></div>`;}
+  else{receipts=`<div class="pd-sec no-print"><h3>Attached Bills & Receipts</h3><p class="desc">None attached yet.</p></div>`;}
+  document.getElementById('printDoc').innerHTML=`
+    <div class="pd-head"><div class="biz">MIKE'S LODGING HOUSE</div><div class="subttl">Torres Family Boarding House</div><div class="mo">Monthly Record — ${monthName(curMonth)}</div><div class="tag">Owner: Mike Torres · Manager: Ohara Torres</div></div>
+    <div class="pd-meta"><span>Occupancy: ${lodgers.length} of ${cap} beds</span><span>Generated: ${new Date().toLocaleDateString("en-US",{year:"numeric",month:"long",day:"numeric"})}</span></div>
+    <div class="pd-sec"><h3>Lodgers</h3><table class="pd-table"><thead><tr><th>Name</th><th>Contact</th><th>Room</th><th>Date Started</th><th>Due</th><th class="num">Monthly Rent</th><th class="num">Deposit Held</th></tr></thead><tbody>${lodgerRows}</tbody></table></div>
+    <div class="pd-sec"><h3>Income</h3><div class="pd-line"><span class="l">Payments collected</span><span class="pos">${peso(inc.other)}</span></div><div class="pd-line"><span class="l">Laundry space rental (${esc(data.laundry.owner)}, c/o ${esc(data.laundry.co)})</span><span class="pos">${peso(inc.laundry)}</span></div>${otherRows}<div class="pd-total"><span>Total Income</span><span class="pos">${peso(inc.total)}</span></div></div>
+    <div class="pd-sec"><h3>Expenses</h3><div class="pd-line"><span class="l">💧 Water</span><span class="neg">${peso(exp.water)}</span></div><div class="pd-line"><span class="l">⚡ Electrical</span><span class="neg">${peso(exp.elec)}</span></div><div class="pd-line"><span class="l">🏛 Government contributions</span><span class="neg">${peso(exp.gov)}</span></div><div style="margin:10px 0 4px;font-size:12px;font-weight:700;color:var(--muted)">Repair & Maintenance</div><table class="pd-table"><thead><tr><th>Type</th><th>Note</th><th class="num">Amount</th></tr></thead><tbody>${rmRows}</tbody></table><div class="pd-total"><span>Total Expenses</span><span class="neg">${peso(exp.total)}</span></div></div>
+    <div class="pd-carry"><div class="row"><span>Net income (${monthName(curMonth)})</span><span style="font-weight:800;color:${net>=0?'var(--green)':'var(--red)'}">${peso(net)}</span></div><div class="row"><span>Profit carried over from ${monthName(prevYM)}</span><span style="font-weight:700">${peso(carried)}</span></div><div class="row big"><span>OVERALL TOTAL PROFIT (to date)</span><span>${peso(running)}</span></div></div>
+    <div class="pd-note">🔒 Deposits held (refundable): <b>${peso(totalDeposits())}</b>.</div>
+    ${receipts}
+    <div class="pd-foot">MIKE'S LODGING HOUSE · ${monthName(curMonth)}</div>`;
+}
+function fileToCompressed(file){return new Promise(res=>{const reader=new FileReader();reader.onload=()=>{const img=new Image();img.onload=()=>{const max=1000;let w=img.width,h=img.height;if(w>max||h>max){const s=Math.min(max/w,max/h);w=Math.round(w*s);h=Math.round(h*s);}const c=document.createElement('canvas');c.width=w;c.height=h;c.getContext('2d').drawImage(img,0,0,w,h);try{res(c.toDataURL('image/jpeg',0.7));}catch(e){res(null);}};img.onerror=()=>res(null);img.src=reader.result;};reader.onerror=()=>res(null);reader.readAsDataURL(file);});}
+async function addReceipts(ev){const files=[...ev.target.files];ev.target.value="";if(!files.length)return;const m=getMonth(curMonth);let added=0;for(const f of files){if(!f.type.startsWith('image/'))continue;const url=await fileToCompressed(f);if(url){m.receipts.push({name:f.name,url});added++;}}persist();renderPrint();}
+function delReceipt(i){if(confirm("Remove this attached image?")){getMonth(curMonth).receipts.splice(i,1);persist();renderPrint();}}
+
+const DEFAULT_MSG="Good day {name}! This is a friendly reminder from Mike's Lodging House that your monthly rental of {amount} for {room} is due on {date}. Kindly settle on or before the due date. Thank you po! - {manager}";
+function msgTemplate(){return(data.msgTpl&&data.msgTpl.trim())?data.msgTpl:DEFAULT_MSG;}
+function buildMessage(l){const due=nextDueDate(l,new Date());const room=data.rooms.find(r=>r.id==l.room);return msgTemplate().replace(/{name}/g,l.name||"").replace(/{amount}/g,peso(l.fee)).replace(/{date}/g,due?due.toLocaleDateString("en-US",{month:"long",day:"numeric",year:"numeric"}):"").replace(/{room}/g,room?room.name:"your room").replace(/{manager}/g,"Ohara Torres, Manager");}
+function sendReminder(id){const l=data.lodgers.find(x=>x.id===id);if(!l)return;if(!l.phone){alert("No contact number saved for "+l.name+".");return;}const body=buildMessage(l);const num=String(l.phone).replace(/[^\d+]/g,"");const ua=navigator.userAgent||"";const sep=/iPhone|iPad|iPod|Macintosh/i.test(ua)?"&":"?";window.open("sms:"+num+sep+"body="+encodeURIComponent(body),"_self");setTimeout(()=>{if(navigator.clipboard&&navigator.clipboard.writeText)navigator.clipboard.writeText(body).catch(()=>{});},300);}
+function saveMsgTpl(){data.msgTpl=document.getElementById('setMsgTpl').value;persist();alert("Reminder message saved.");}
+function resetMsgTpl(){document.getElementById('setMsgTpl').value=DEFAULT_MSG;data.msgTpl=DEFAULT_MSG;persist();}
+
+const LODGER_CONTACTS=[{name:"Sibyl Lamosan",phone:"09679368558",start:"2016-02-27",deposit:0},{name:"Sheila Marie Eluna",phone:"09954296606",start:"2021-11-29",deposit:1200},{name:"Jinky Deguit",phone:"",start:"2021-11-06",deposit:1200},{name:"May Ann Villalongja",phone:"09558253775",start:"2022-12-21",deposit:1200},{name:"Emelyn Deguit",phone:"09205753826",start:"2022-02-27",deposit:1200},{name:"Roselyn Patris",phone:"09353498559",start:"2024-03-27",deposit:1300,status:"out"},{name:"Harrah Jane Rendon",phone:"09152953866",start:"2025-05-04",deposit:1500},{name:"Joy Consigna",phone:"09488376602",start:"2025-08-03",deposit:1500},{name:"Stephanie Yu",phone:"09152953723",start:"2026-05-07",deposit:1500}];
+function seedContacts(){let updated=0,notFound=[];LODGER_CONTACTS.forEach(c=>{const l=data.lodgers.find(x=>x.name.trim().toLowerCase()===c.name.trim().toLowerCase());if(l){if(c.phone)l.phone=c.phone;if(c.start&&!l.start)l.start=c.start;if(c.deposit&&!l.deposit)l.deposit=c.deposit;if(c.status==="out")l.status="out";updated++;}else notFound.push(c.name);});if(!data.laundry.phone)data.laundry.phone="09975617054";persist();let msg=`Contact numbers added to ${updated} lodger(s). ✓`;if(notFound.length)msg+=`\n\nNot found:\n• ${notFound.join("\n• ")}`;alert(msg);renderAll();showTab('lodgers');}
+
+const JULY_RM=[{cat:"SSS contribution",note:"Mike's SSS contribution — July 2026",amt:2108.00},{cat:"Pag-ibig contribution",note:"Pag-ibig — Jul–Sept 2026",amt:1210.00},{cat:"PhilHealth contribution",note:"PhilHealth — Jul–Sept 2026",amt:1520.00}];
+const JULY_WATER=1595.85,JULY_ELEC=4945.76;
+function fixGovCategories(){let fixed=0;Object.keys(data.months).forEach(ym=>{const m=data.months[ym];if(!m||!m.rm)return;m.rm.forEach(r=>{if(r.cat==="Others"){if(r.note&&r.note.toLowerCase().includes("sss")){r.cat="SSS contribution";fixed++;}else if(r.note&&r.note.toLowerCase().includes("pag")){r.cat="Pag-ibig contribution";fixed++;}else if(r.note&&r.note.toLowerCase().includes("philhealth")){r.cat="PhilHealth contribution";fixed++;}}});});persist();alert(fixed+" entries corrected ✓");renderAll();showTab('monthly');}
+function fillJuly2026(){
+  if(data.julySeeded&&!confirm("July 2026 was already filled in once. Add again?"))return;
+  const jul=getMonth("2026-07");jul.water=JULY_WATER;jul.elec=JULY_ELEC;
+  JULY_RM.forEach(it=>{const dup=(jul.rm||[]).some(r=>r.note===it.note&&Number(r.amt)===it.amt);if(!dup)jul.rm.push({...it});});
+  if(!jul.ticked)jul.ticked={};if(!jul.other)jul.other=[];
+  const julyPaid=[
+    {match:l=>l.name.toLowerCase().includes("rendon"),amt:1500,label:"Rendon, H. — July rent"},
+    {match:l=>l.name.toLowerCase().includes("stephanie")||l.name.toLowerCase().includes("yu"),amt:1500,label:"Yu, S. — July rent"},
+    {match:l=>l.name.toLowerCase().includes("lamosan"),amt:1500,label:"Lamosan, S. — July rent"},
+    {match:l=>l.name.toLowerCase().includes("emelyn"),amt:1500,label:"Deguit, E. — July rent"},
+    {match:l=>l.name.toLowerCase().includes("eluna"),amt:1700,label:"Eluna, S. — July rent"},
+    {match:l=>l.name.toLowerCase().includes("jinky"),amt:1500,label:"Deguit, J. — July rent"},
+  ];
+  jul.other=jul.other.filter(o=>!o.label||!o.label.includes("July rent"));
+  julyPaid.forEach(p=>{const l=activeLodgers().find(p.match);if(l){jul.ticked[l.id]=true;const dup=jul.other.some(o=>o.desc===p.label&&Number(o.amt)===p.amt);if(!dup)jul.other.push({desc:p.label,amt:p.amt});}else{const dup=jul.other.some(o=>o.desc===p.label&&Number(o.amt)===p.amt);if(!dup)jul.other.push({desc:p.label,amt:p.amt});}});
+  data.julySeeded=true;persist();
+  const f=n=>"₱"+Number(n).toLocaleString("en-PH",{minimumFractionDigits:2,maximumFractionDigits:2});
+  alert("July 2026 filled in ✓\n\nRunning profit: "+f(cumulativeUpTo("2026-07"))+"\n\nStill to collect: Joy Consigna, May Ann Villalongja, Mr. Jose Go (laundry)");
+  curMonth="2026-07";renderAll();showTab('monthly');
+}
+const JUNE_RM=[{cat:"SSS contribution",note:"Mike's SSS contribution — June 2026",amt:2100},{cat:"Light bulb change",note:"dining lights (6/4)",amt:1500},{cat:"Others",note:"labor — dining lights",amt:150},{cat:"Others",note:"padlock for gate (6/11)",amt:250},{cat:"Key duplication",note:"keys duplicate (6/11)",amt:300},{cat:"Others",note:"smoke alarm — 6 pcs (6/16)",amt:3270},{cat:"Others",note:"plywood + labor, 1 room (6/20)",amt:941.75}];
+const MAY_OPENING=53075.07,JUNE_BOOK_INCOME=16500;
+function fillJune2026(){
+  if(data.juneSeeded&&!confirm("June 2026 was already filled in once. Add again?"))return;
+  const jun=getMonth("2026-06");jun.water=1808.95;jun.elec=5105.10;
+  let added=0;JUNE_RM.forEach(it=>{const dup=(jun.rm||[]).some(r=>r.note===it.note&&Number(r.amt)===it.amt);if(!dup){jun.rm.push({...it});added++;}});
+  const may=getMonth("2026-05");const openLabel="Balance forwarded — as of May 2026 (opening balance)";
+  if(!(may.other||[]).some(o=>o.desc===openLabel))may.other.push({desc:openLabel,amt:MAY_OPENING});
+  data.juneSeeded=true;persist();
+  const inc=incomeOf("2026-06");const diff=Math.round((JUNE_BOOK_INCOME-inc.total)*100)/100;
+  let msg="June 2026 filled in ✓\n\nExpenses: "+peso(expenseOf("2026-06").total)+"\nJune income computed: "+peso(inc.total)+"\nBook shows: "+peso(JUNE_BOOK_INCOME);
+  if(Math.abs(diff)>=1){if(diff>0&&confirm(msg+"\n\nAdd "+peso(diff)+" adjustment to match the book?")){jun.other.push({desc:"June income adjustment",amt:diff});persist();}else alert(msg);}else alert(msg+" ✓");
+  const st=document.getElementById('juneStatus');if(st)st.textContent="Filled in — balance: "+peso(cumulativeUpTo("2026-06"));
+  curMonth="2026-06";renderAll();showTab('monthly');
+}
+
+function renderSettings(){
+  document.getElementById('setLaundryOwner').value=data.laundry.owner;document.getElementById('setLaundryCO').value=data.laundry.co;document.getElementById('setLaundryFee').value=data.laundry.fee||"";
+  document.getElementById('setOwnerPin').value=data.pins.owner;document.getElementById('setMgrPin').value=data.pins.manager;
+  const mt=document.getElementById('setMsgTpl');if(mt)mt.value=msgTemplate();
+  const conn=document.getElementById('cloudConnected'),disc=document.getElementById('cloudDisconnected');
+  if(conn&&disc){conn.classList.toggle('hidden',!cloud.connected);disc.classList.toggle('hidden',cloud.connected);if(cloud.connected)document.getElementById('cloudUrlShow').textContent=cloud.url;else{document.getElementById('cfgUrl').value=cloud.url;document.getElementById('cfgKey').value=cloud.key;}}
+}
+function saveLaundry(){data.laundry.owner=document.getElementById('setLaundryOwner').value.trim()||"Mr. Jose Go";data.laundry.co=document.getElementById('setLaundryCO').value.trim()||"Netchie Gomisong";data.laundry.fee=Number(document.getElementById('setLaundryFee').value)||0;persist();alert("Laundry details saved.");}
+function savePins(){if(session!=="owner"){alert("Only the Owner can change PINs.");return;}const o=document.getElementById('setOwnerPin').value.trim();const mg=document.getElementById('setMgrPin').value.trim();if(!/^\d{4,6}$/.test(o)||!/^\d{4,6}$/.test(mg)){alert("PINs must be 4–6 digits.");return;}if(o===mg){alert("Owner and Manager PINs must be different.");return;}data.pins.owner=o;data.pins.manager=mg;persist();alert("PINs updated.");}
+function exportData(){const blob=new Blob([JSON.stringify(data,null,2)],{type:"application/json"});const a=document.createElement("a");a.href=URL.createObjectURL(blob);a.download="mikes-lodging-backup-"+ymNow()+".json";a.click();}
+function copyAllData(){const txt=JSON.stringify(data);const box=document.getElementById('backupText');box.value=txt;box.select();if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(txt).then(()=>alert("All data copied ✓")).catch(()=>{try{document.execCommand('copy');}catch(e){}alert("Data shown in the box — select all and copy manually.");});}else{try{document.execCommand('copy');}catch(e){}alert("Data shown in the box — select all and copy manually.");}}
+function loadPastedData(){const txt=document.getElementById('backupText').value.trim();if(!txt){alert("Paste your backup text first.");return;}let d;try{d=JSON.parse(txt);}catch(e){alert("That text isn't valid JSON.");return;}if(!d.pins||!d.rooms){alert("That doesn't look like a Mike's Lodging backup.");return;}if(!confirm("Replace all current data with the pasted data?"))return;data=d;persist();alert("Data loaded ✓");renderAll();showTab('dash');}
+function importData(ev){const f=ev.target.files[0];if(!f)return;const r=new FileReader();r.onload=()=>{try{const d=JSON.parse(r.result);if(!d.pins||!d.rooms)throw 0;data=d;persist();alert("Backup imported.");renderAll();}catch(e){alert("Could not read that backup.");}};r.readAsText(f);ev.target.value="";}
+function wipeData(){if(session!=="owner"){alert("Only the Owner can reset all data.");return;}if(confirm("Erase ALL data? Export a backup first if unsure.")){data=defaultData();persist();renderAll();showTab('dash');}}
+
+function esc(s){return String(s==null?"":s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
+function renderAll(){renderReminders();renderDash();renderLodgers();renderMonthly();renderYear();renderPrint();renderSettings();}
+
+/* ============================================================
+   CLOUD SYNC
+   ============================================================ */
+const CLOUD_CFG_KEY="mikes_cloud_cfg";
+let cloud={url:"",key:"",houseId:"mikes-lodging-house",connected:false};
+let cloudTimer=null,pushTimer=null,pulling=false;
+function loadCloudCfg(){try{const r=localStorage.getItem(CLOUD_CFG_KEY);if(r){const c=JSON.parse(r);cloud.url=c.url||"";cloud.key=c.key||"";cloud.houseId=c.houseId||"mikes-lodging-house";cloud.connected=!!(cloud.url&&cloud.key);}}catch(e){}}
+function saveCloudCfg(){try{localStorage.setItem(CLOUD_CFG_KEY,JSON.stringify({url:cloud.url,key:cloud.key,houseId:cloud.houseId}));}catch(e){}}
+function cloudHeaders(){return{"apikey":cloud.key,"Authorization":"Bearer "+cloud.key,"Content-Type":"application/json"};}
+function cloudBase(){return cloud.url.replace(/\/+$/,"")+"/rest/v1/lodging_state";}
+function setCloudStatus(msg,kind){
+  const el=document.getElementById('cloudStatus');if(el){el.textContent=msg||"";el.style.color=kind==='err'?'var(--red)':'var(--muted)';}
+  const chip=document.getElementById('cloudChip');if(chip){chip.classList.remove('on','busy','err');if(!cloud.connected){chip.textContent="Local only";}else if(kind==='err'){chip.textContent="Sync error";chip.classList.add('err');}else if(kind==='busy'){chip.textContent="Syncing…";chip.classList.add('busy');}else{chip.textContent="☁ Synced";chip.classList.add('on');}}
+}
+async function cloudFetchRow(){const res=await fetch(cloudBase()+"?id=eq."+encodeURIComponent(cloud.houseId)+"&select=*",{headers:cloudHeaders()});if(!res.ok)throw new Error("HTTP "+res.status);const arr=await res.json();return arr&&arr.length?arr[0]:null;}
+async function cloudPush(){if(!cloud.connected)return;setCloudStatus("Saving to cloud…","busy");try{const body=[{id:cloud.houseId,data:data,updated_at:data.updatedAt||new Date().toISOString()}];const res=await fetch(cloudBase(),{method:"POST",headers:{...cloudHeaders(),"Prefer":"resolution=merge-duplicates"},body:JSON.stringify(body)});if(!res.ok)throw new Error("HTTP "+res.status);setCloudStatus("Synced ✓");}catch(e){setCloudStatus("Cloud save failed: "+e.message,'err');}}
+function cloudPushDebounced(){if(!cloud.connected)return;clearTimeout(pushTimer);pushTimer=setTimeout(cloudPush,1200);}
+async function cloudPull(force){
+  if(!cloud.connected||pulling)return;
+  const editing=document.activeElement&&/^(INPUT|SELECT|TEXTAREA)$/.test(document.activeElement.tagName);
+  if(editing&&!force)return;
+  pulling=true;
+  try{const row=await cloudFetchRow();if(row&&row.data){const rt=Date.parse(row.data.updatedAt||row.updated_at||0)||0;const lt=Date.parse(data.updatedAt||0)||0;if(force||rt>lt){data=row.data;storage.set(data);if(session)renderAll();}setCloudStatus("Synced ✓");}pulling=false;return row;}
+  catch(e){setCloudStatus("Cloud check failed: "+e.message,'err');pulling=false;return undefined;}
+}
+async function cloudConnect(){
+  const url=document.getElementById('cfgUrl').value.trim().replace(/\/+$/,"");const key=document.getElementById('cfgKey').value.trim();
+  if(!/^https:\/\/.+\.supabase\.co$/.test(url)){alert("Enter your Supabase Project URL.");return;}if(!key){alert("Enter your Supabase anon key.");return;}
+  cloud.url=url;cloud.key=key;cloud.connected=true;saveCloudCfg();setCloudStatus("Connecting…","busy");
+  let row;try{row=await cloudFetchRow();}catch(e){cloud.connected=false;setCloudStatus("Could not connect: "+e.message,'err');renderSettings();return;}
+  const localHas=data.lodgers.length>0||Object.keys(data.months).length>0;
+  if(!row){await cloudPush();setCloudStatus("Connected ✓");}else if(!localHas){await cloudPull(true);setCloudStatus("Connected — pulled data ✓");}
+  else{const keepCloud=confirm("Cloud has saved data.\n\nOK = use the CLOUD copy (choose this on 2nd device).\nCancel = overwrite cloud with THIS device's data.");if(keepCloud){await cloudPull(true);}else{await cloudPush();}}
+  startCloudLoop();renderSettings();
+}
+function cloudDisconnect(){if(!confirm("Disconnect from cloud sync?"))return;cloud.connected=false;cloud.url="";cloud.key="";try{localStorage.removeItem(CLOUD_CFG_KEY);}catch(e){}stopCloudLoop();setCloudStatus("Disconnected.");renderSettings();}
+function syncNow(){setCloudStatus("Syncing…","busy");cloudPull(false).then(()=>cloudPush());}
+function startCloudLoop(){stopCloudLoop();cloudTimer=setInterval(()=>{cloudPull(false);},12000);}
+function stopCloudLoop(){if(cloudTimer)clearInterval(cloudTimer);cloudTimer=null;}
+
+loadCloudCfg();
+if(cloud.connected){setCloudStatus("Synced ✓");cloudPull(true);startCloudLoop();}else setCloudStatus("");
+showLoginHint();
+</script>
+</body>
+</html>
