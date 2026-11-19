@@ -687,7 +687,9 @@ const SEPT_2026_BASIS={
   expenses:12863.42,
   net:3636.58,
   deposits:12000,
-  runningProfit:58809.05
+  // September 2026 handwritten closing balance after excluding deposits.
+  // October and subsequent months carry forward from this verified book balance.
+  runningProfit:60309.05
 };
 function cumulativeUpTo(ym){
   // January–August keep the original ledger calculation exactly as stored.
