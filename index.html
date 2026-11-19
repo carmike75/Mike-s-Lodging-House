@@ -786,31 +786,50 @@ function ensureStephanieMovedOutHistory(){
  if(l.historicalRecordRecovered && !l.moveOutRemarks.includes('Recovered')){l.moveOutRemarks+=' Recovered from original roster; historic payments need verification.';changed=true;}
  return changed;
 }
-// Roselyn Patris: owner-confirmed security-deposit application, entered 2026-11-19.
-// Record the outstanding rent/charges offset without inventing cash income or a refund.
+// Roselyn Patris: revised owner-confirmed deposit, Nov 19, 2026: ₱1,300, not ₱1,500.
+// Correct only the identified owner-generated entry; preserve all monthly history and cash records.
 function ensureRoselynDepositApplied(){
  const l=(data.lodgers||[]).find(x=>String(x.name||'').trim().toLowerCase()==='roselyn patris');
- if(!l||l.status!=='out'||Math.round(Number(l.deposit||0)*100)!==150000)return false;
- const tx=(data.depositTransactions||[]).filter(x=>x.lodgerId===l.id);
- const st=(data.settlements||[]).filter(x=>x.lodgerId===l.id);
- // Never overwrite or duplicate a previously reconciled transaction.
- if(tx.length||st.length>1||st.some(x=>Number(x.applied||0)!==0||Number(x.refundPaid||0)!==0||Number(x.refundOwed||0)!==0))return false;
- const sid=st.length?st[0].id:'owner-roselyn-deposit-applied-20261119';
- const knownDate=/^\d{4}-\d{2}-\d{2}$/.test(l.movedOutDate||'');
- const date=knownDate?l.movedOutDate:'2026-11-19';
- const dateNote=knownDate?'Applied using the existing recorded move-out date.':'Recorded November 19, 2026; original move-out date not confirmed.';
- data.depositTransactions.push({id:'owner-roselyn-20261119-applied',settlementId:sid,lodgerId:l.id,date,type:'applied',amount:1500,note:'OWNER CONFIRMED: ₱1,500 deposit applied to outstanding rent/charges. No cash refund. '+dateNote});
- if(st.length){
-  const record=st[0];
-  record.applied=1500;record.deductions=1500;record.refundOwed=0;record.refundPaid=0;
-  record.balanceToCollect=0;record.unreconciledDeposit=0;record.status='settled';
-  record.remarks='Owner confirmed entire ₱1,500 deposit applied to outstanding rent/charges, ₱0 refunded, ₱0 held. Charge breakdown unspecified. '+dateNote;
+ if(!l||l.status!=='out'||![1300,1500].includes(Number(l.deposit)))return false;
+ const records=(data.depositTransactions||[]).filter(x=>x.lodgerId===l.id);
+ const previous=records.find(x=>x.id==='owner-roselyn-20261119-applied'&&x.type==='applied');
+ const other=records.filter(x=>x!==previous);
+ const priorSettlements=(data.settlements||[]).filter(x=>x.lodgerId===l.id);
+ // Do not auto-rewrite any other cash, deduction, or manual settlement records.
+ if(other.length||priorSettlements.length>1||priorSettlements.some(x=>
+   x.id!=='owner-roselyn-deposit-applied-20261119'&&
+   x.id!==previous?.settlementId&&
+   (Number(x.applied||0)!==0||Number(x.refundPaid||0)!==0||Number(x.refundOwed||0)!==0)))return false;
+ // If previous patch ran, recognize only its exact applied amount.
+ if(previous&&![1300,1500].includes(Number(previous.amount)))return false;
+ let changed=false;
+ if(Number(l.deposit)!==1300){l.deposit=1300;changed=true;}
+ const sid=priorSettlements[0]?.id||'owner-roselyn-deposit-applied-20261119';
+ const hasMoveDate=/^\d{4}-\d{2}-\d{2}$/.test(l.movedOutDate||'');
+ const date=hasMoveDate?l.movedOutDate:'2026-11-19';
+ const note='OWNER CORRECTION: actual ₱1,300 deposit fully applied to outstanding rent or charges, no refund. Charge breakdown not supplied. Correction entered 2026-11-19; original move-out date '+(hasMoveDate?'as previously recorded.':'not established.');
+ if(previous){
+   if(Number(previous.amount)!==1300||previous.note!==note){previous.amount=1300;previous.note=note;changed=true;}
  }else{
-  data.settlements.push({id:sid,lodgerId:l.id,date,paidThrough:'',extension:0,deductions:1500,applied:1500,refundOwed:0,refundPaid:0,balanceToCollect:0,status:'settled',unreconciledDeposit:0,remarks:'Owner confirmed full ₱1,500 deposit applied to outstanding rent/charges. No cash refund; charge breakdown unspecified. '+dateNote});
+   data.depositTransactions.push({id:'owner-roselyn-20261119-applied',settlementId:sid,lodgerId:l.id,date,type:'applied',amount:1300,note});
+   changed=true;
  }
- l.settlementId=sid;l.settlementStatus='settled';
- l.moveOutRemarks=(l.moveOutRemarks?l.moveOutRemarks+' ':'')+'Owner-confirmed: ₱1,500 deposit applied to outstanding rent/charges; ₱0 refunded, ₱0 still held. '+dateNote;
- return true;
+ let st=priorSettlements[0];
+ if(!st){
+   st={id:sid,lodgerId:l.id,date,paidThrough:'',extension:0,deductions:1300,applied:1300,refundOwed:0,refundPaid:0,balanceToCollect:0,status:'settled',unreconciledDeposit:0,remarks:note};
+   data.settlements.push(st);changed=true;
+ }else{
+   for(const [k,v] of Object.entries({applied:1300,deductions:1300,refundOwed:0,refundPaid:0,balanceToCollect:0,unreconciledDeposit:0,status:'settled',remarks:note})){
+     if(st[k]!==v){st[k]=v;changed=true;}
+   }
+ }
+ if(l.settlementId!==sid){l.settlementId=sid;changed=true;}
+ if(l.settlementStatus!=='settled'){l.settlementStatus='settled';changed=true;}
+ const corrected='Owner-confirmed correction (2026-11-19): ₱1,300 deposit applied to outstanding rent/charges, ₱0 refunded, ₱0 still held.';
+ let remarks=String(l.moveOutRemarks||'').replace(/Owner-confirmed: ₱1,500 deposit applied to outstanding rent\/charges; ₱0 refunded, ₱0 still held\.[\s\S]*$/,'').trim();
+ if(!remarks.includes(corrected))remarks=(remarks?remarks+' ':'')+corrected;
+ if(l.moveOutRemarks!==remarks){l.moveOutRemarks=remarks;changed=true;}
+ return changed;
 }
 function initializeAccountingData(){
  let changed=false;
