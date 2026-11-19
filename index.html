@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Mike's Lodging House</title>
-<!-- Final 2026 accounting build: Jan-Aug preserved, Sep closing basis fixed, Oct+ carries forward from ₱58,809.05 -->
+<!-- Mike's Lodging House final deployment, 2026-11-19: historical monthly retention, calendar-day settlement, Stephanie Yu ten days / ₱500 applied / ₱1,000 refunded. -->
 <meta name="theme-color" content="#155e63">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="mobile-web-app-capable" content="yes">
@@ -330,8 +330,8 @@
       <p class="desc">Finalize the deposit, balance, move-out date, and account status before moving a lodger to history.</p>
       <div class="form-grid tight">
         <div class="inp"><label>Lodger</label><select id="stLodger" onchange="calcSettlement()"></select></div>
-        <div class="inp"><label>Date moved out (first day not occupying)</label><input id="stOutDate" type="date" onchange="calcSettlement()"></div>
-        <div class="inp"><label>Rent paid through (first unpaid date)</label><input id="stPaidThrough" type="date" onchange="calcSettlement()"></div>
+        <div class="inp"><label>Last day occupying (move-out date)</label><input id="stOutDate" type="date" onchange="calcSettlement()"></div>
+        <div class="inp"><label>First unpaid day (after rent already paid)</label><input id="stPaidThrough" type="date" onchange="calcSettlement()"></div>
         <div class="inp"><label>Other approved deductions (₱)</label><input id="stDeductions" type="number" min="0" step="0.01" value="0" oninput="calcSettlement()"></div>
         <div class="inp"><label>Refund actually paid?</label><label style="font-size:14px"><input id="stRefundPaid" type="checkbox" onchange="calcSettlement()"> Yes, paid and confirmed</label></div>
         <div class="inp"><label>Final account status</label><select id="stFinalStatus"><option value="settled">Account Settled — No Outstanding Rental Balance</option><option value="pending">Settlement Pending — Balance or Refund Unresolved</option></select></div>
@@ -348,7 +348,7 @@
         <div class="inp"><label>Extension month</label><input id="stRefMonth" type="month" onchange="calcExtension()"></div>
       </div>
       <div id="extensionResult"></div>
-      <p class="desc">Extension is prorated by the actual rental cycle starting on the original move-in anniversary, not simply calendar-month length.</p>
+      <p class="desc">Each chargeable day uses that lodger’s monthly rent divided by the actual days in its calendar month (28, 29, 30, or 31). The original move-in anniversary still determines the due date. Cross-month extensions are split by month.</p>
     </div>
     <div class="panel">
       <h2>Security Deposit Reconciliation</h2>
@@ -357,7 +357,7 @@
     </div>
     <div class="panel">
       <h2>Former Lodgers — History</h2>
-      <p class="desc">Moved-out lodgers are removed from the current list and retained here for reference.</p>
+      <p class="desc">Moved-out lodgers remain here even if their old active roster entry was missing. Recovered identities are marked; historical payments are never fabricated.</p>
       <details class="history-toggle" id="formerHistoryToggle" open>
         <summary id="formerHistorySummary">View former lodgers (includes Stephanie Yu)</summary>
         <div class="history-body"><div class="table-wrap"><table id="formerLodgerTable"></table></div></div>
@@ -725,23 +725,65 @@ function monthlyRentCollected(ym){const m=data.months[ym];if(!m)return 0;return 
 },0);}
 // Owner-confirmed historical event. Idempotent: does not duplicate existing settlement entries.
 function ensureStephanieMovedOutHistory(){
- const l=(data.lodgers||[]).find(x=>String(x.name||'').trim().toLowerCase()==='stephanie yu');
- if(!l)return false;
+ // Historical repair: older browser/cloud backups may omit Stephanie entirely.
+ // Restore only her roster identity from the original embedded HTML, never fabricate past payments.
+ if(!Array.isArray(data.lodgers))data.lodgers=[];
+ let l=data.lodgers.find(x=>String(x.name||'').trim().toLowerCase()==='stephanie yu'||x.id==='lodger_stephanie');
  let changed=false;
+ if(!l){
+   const original=defaultData().lodgers.find(x=>x.id==='lodger_stephanie');
+   l={...original,status:'out',movedOutDate:'2026-11-16',historicalRecordRecovered:true,
+      historicalRecoveryNote:'Recovered from original HTML roster because existing saved data omitted this former lodger. Past monthly receipts were not reconstructed; verify opening deposit against manual ledger.'};
+   if(data.lodgers.some(x=>x.id===l.id))l.id='lodger_stephanie_recovered_20261116';
+   data.lodgers.push(l);changed=true;
+ }
+ if(l.name!=='Stephanie Yu'){l.name='Stephanie Yu';changed=true;}
  if(l.status!=='out'){l.status='out';changed=true;}
  if(l.movedOutDate!=='2026-11-16'){l.movedOutDate='2026-11-16';changed=true;}
  const existing=(data.settlements||[]).find(x=>x.lodgerId===l.id);
  const tx=(data.depositTransactions||[]).filter(x=>x.lodgerId===l.id);
+ // Safe, idempotent migration: only our previous Nov-16 historical correction
+ // with its ₱250 applied entry and ₱1,000 cash refund. Do not change other entries.
+ const oldApplied=tx.find(t=>t.type==='applied'&&Number(t.amount)===250&&t.date==='2026-11-16'&&
+   (t.id==='owner-stephanie-20261116-extension'||String(t.note||'').includes('OWNER CONFIRMED: 5 chargeable days')));
+ const matchedRefund=tx.find(t=>t.type==='refund'&&Number(t.amount)===1000&&t.date==='2026-11-16'&&
+   (t.settlementId===oldApplied?.settlementId));
+ const oldSettlement=(data.settlements||[]).find(st=>st.lodgerId===l.id&&st.id===oldApplied?.settlementId&&
+   Number(st.applied)===250&&Number(st.refundPaid)===1000&&st.date==='2026-11-16');
+ if(oldApplied && matchedRefund && oldSettlement && Number(l.deposit)===1500){
+   oldApplied.amount=500;
+   oldApplied.note='OWNER CORRECTION: ₱500 applied for ten chargeable days at ₱50/day. Previous ₱250 entry corrected; no extra cash refund.';
+   oldSettlement.extension=500;oldSettlement.extensionDays=10;oldSettlement.dailyRate=50;
+   oldSettlement.applied=500;oldSettlement.status='settled';oldSettlement.unreconciledDeposit=0;
+   oldSettlement.remarks='Owner corrected: ₱500 deposit deduction for ten chargeable days and ₱1,000 refund paid November 16, 2026. Deposit fully reconciled.';
+   l.settlementStatus='settled';
+   l.moveOutRemarks='Moved out November 16, 2026. Deposit ₱1,500: ₱500 applied to ten-day extension, ₱1,000 refunded. No remaining balance.';
+   changed=true;
+ }
+
+ // Correct metadata in our previously generated ₱500/5-day settlement without changing the cash amounts.
+ const ourPrevious=(data.settlements||[]).find(st=>st.lodgerId===l.id&&st.date==='2026-11-16'&&
+   Number(st.applied)===500&&Number(st.refundPaid)===1000&&Number(st.extensionDays)===5&&
+   (st.id==='owner-stephanie-20261116'||String(st.remarks||'').includes('Owner corrected')));
+ if(ourPrevious){
+   ourPrevious.extensionDays=10;ourPrevious.dailyRate=50;ourPrevious.extension=500;
+   ourPrevious.remarks='Owner verified: extension November 7–16, 2026 inclusive, ten days at ₱50/day = ₱500 deducted from original ₱1,500 deposit; ₱1,000 refunded November 16.';
+   for(const entry of tx.filter(t=>t.settlementId===ourPrevious.id&&t.type==='applied'&&Number(t.amount)===500))
+     entry.note='Owner verified: November 7–16 inclusive; 10 days × ₱50/day = ₱500 applied to deposit';
+   l.moveOutRemarks='Moved out November 16, 2026. Ten extended rental days November 7–16 at ₱50/day = ₱500 deducted; actual refund ₱1,000.';
+   changed=true;
+ }
  if(!existing && !tx.length && Number(l.deposit)===1500){
    const sid='owner-stephanie-20261116';
-   data.depositTransactions.push({id:sid+'-extension',settlementId:sid,lodgerId:l.id,date:'2026-11-16',type:'applied',amount:250,note:'Five chargeable days at ₱50 per day; applied to deposit'});
+   data.depositTransactions.push({id:sid+'-extension',settlementId:sid,lodgerId:l.id,date:'2026-11-16',type:'applied',amount:500,note:'Owner-corrected total deduction ₱500 for ten chargeable days, ₱50/day; applied to deposit'});
    data.depositTransactions.push({id:sid+'-refund',settlementId:sid,lodgerId:l.id,date:'2026-11-16',type:'refund',amount:1000,note:'Actual cash refund to Stephanie Yu, owner-confirmed (NOT ₱250)'});
-   data.settlements.push({id:sid,lodgerId:l.id,date:'2026-11-16',paidThrough:'',extension:250,extensionDays:5,dailyRate:50,deductions:0,applied:250,refundOwed:1000,refundPaid:1000,balanceToCollect:0,status:'pending',unreconciledDeposit:250,remarks:'Actual refund ₱1,000 paid November 16; five days × ₱50 = ₱250 extension. An additional ₱250 of the legacy ₱1,500 deposit remains unreconciled, not an additional refund.'});
-   l.settlementId=sid;changed=true;
+   data.settlements.push({id:sid,lodgerId:l.id,date:'2026-11-16',paidThrough:'',extension:500,extensionDays:10,dailyRate:50,deductions:0,applied:500,refundOwed:1000,refundPaid:1000,balanceToCollect:0,status:'settled',unreconciledDeposit:0,remarks:'Owner corrected: ₱500 applied from deposit for ten chargeable days; ₱1,000 cash refund paid November 16. Legacy ₱1,500 deposit fully accounted for.'});
+   l.settlementId=sid;l.settlementStatus='settled';changed=true;
  }else if(existing&&!l.settlementId){l.settlementId=existing.id;changed=true;}
- if(l.settlementStatus!=='pending' && !existing?.status){l.settlementStatus='pending';changed=true;}
- const remarks='Moved out November 16, 2026. Actual cash refund ₱1,000. Five chargeable extension days × ₱50 = ₱250. No second ₱250 refund. Legacy balance subject to reconciliation.';
+ if(l.settlementStatus!=='settled' && !existing?.status){l.settlementStatus='settled';changed=true;}
+ const remarks='Moved out November 16, 2026. Actual cash refund ₱1,000; ₱500 applied for ten chargeable days. Opening deposit ₱1,500 fully accounted for.';
  if(!l.moveOutRemarks){l.moveOutRemarks=remarks;changed=true;}
+ if(l.historicalRecordRecovered && !l.moveOutRemarks.includes('Recovered')){l.moveOutRemarks+=' Recovered from original roster; historic payments need verification.';changed=true;}
  return changed;
 }
 function initializeAccountingData(){
@@ -886,7 +928,7 @@ function renderLodgers(){
   document.getElementById('lodgerTable').innerHTML=`<thead><tr><th>Name</th><th>Contact</th><th>Room</th><th class="num">Rent</th><th>Started</th><th>Due</th><th class="num">Deposit</th><th>Status</th><th></th></tr></thead><tbody>${rows||'<tr><td colspan="9" class="empty-state"><div class="big">🛏️</div>No current lodgers.</td></tr>'}</tbody>`;
   const formerList=data.lodgers.filter(l=>l.status==='out').sort((a,b)=>(b.movedOutDate||'').localeCompare(a.movedOutDate||''));
   const summary=document.getElementById('formerHistorySummary');if(summary)summary.textContent=`View former lodgers (${formerList.length} record${formerList.length===1?'':'s'})`;
-  const former=formerList.map(l=>{const room=data.rooms.find(r=>r.id==l.room);const settled=l.settlementStatus==='settled';const statusText=settled?'Account Settled — No Outstanding Rental Balance':'Settlement not documented / pending';return`<tr><td><b>${esc(l.name)}</b></td><td>${room?room.name:'—'}</td><td>${fmtDate(l.start)}</td><td>${fmtDate(l.movedOutDate)}</td><td class="num">${peso(l.fee)}</td><td><span class="pill" style="background:${settled?'var(--green-soft)':'var(--gold-soft)'};color:${settled?'var(--green)':'var(--gold)'}">${statusText}</span></td><td>${esc(l.moveOutRemarks)||'—'}</td><td><div class="row-actions"><button class="btn ghost small" onclick="editFormerDetails('${l.id}')">Settlement</button><button class="btn ghost small" onclick="editLodger('${l.id}')">Edit</button><button class="btn ghost small" onclick="restoreLodger('${l.id}')">Restore</button><button class="btn danger small" onclick="delLodger('${l.id}')">Del</button></div></td></tr>`;}).join('');
+  const former=formerList.map(l=>{const room=data.rooms.find(r=>r.id==l.room);const settled=l.settlementStatus==='settled';const statusText=settled?'Account Settled — No Outstanding Rental Balance':'Settlement not documented / pending';return`<tr><td><b>${esc(l.name)}</b>${l.historicalRecordRecovered?`<div class="rmeta">Recovered from original roster; check historical entries</div>`:""}</td><td>${room?room.name:'—'}</td><td>${fmtDate(l.start)}</td><td>${fmtDate(l.movedOutDate)}</td><td class="num">${peso(l.fee)}</td><td><span class="pill" style="background:${settled?'var(--green-soft)':'var(--gold-soft)'};color:${settled?'var(--green)':'var(--gold)'}">${statusText}</span></td><td>${esc(l.moveOutRemarks)||'—'}</td><td><div class="row-actions"><button class="btn ghost small" onclick="editFormerDetails('${l.id}')">Settlement</button><button class="btn ghost small" onclick="editLodger('${l.id}')">Edit</button><button class="btn ghost small" onclick="restoreLodger('${l.id}')">Restore</button><button class="btn danger small" onclick="delLodger('${l.id}')">Del</button></div></td></tr>`;}).join('');
   document.getElementById('formerLodgerTable').innerHTML=`<thead><tr><th>Name</th><th>Last room</th><th>Started</th><th>Moved out</th><th class="num">Last rent</th><th>Final status</th><th>Remarks</th><th></th></tr></thead><tbody>${former||'<tr><td colspan="8" class="empty-state">No former lodgers recorded.</td></tr>'}</tbody>`;
   populateSettlementLodgers();renderDepositLedger();
 }
@@ -953,7 +995,7 @@ function renderMonthly(){
   renderTicker();renderGovTable();autoFillGovNote();
   const inc=monthIncome(curMonth),exp=monthExpense(curMonth),net=monthNet(curMonth);
   const isSeptBasis=curMonth===SEPT_2026_BASIS.month;
-  const expectedIncome=isSeptBasis?SEPT_2026_BASIS.expectedIncome:lodgersForMonth(curMonth).reduce((s,l)=>s+(Number(l.fee)||0),0)+(Number(monthLaundry(curMonth))||0);
+  const expectedIncome=isSeptBasis?SEPT_2026_BASIS.expectedIncome:lodgersForMonth(curMonth).reduce((s,l)=>s+historicalFee(l,curMonth),0)+(Number(monthLaundry(curMonth))||0);
   const collectedIncome=isSeptBasis?SEPT_2026_BASIS.collectedIncome:inc.total;
   const shownExpenses=isSeptBasis?SEPT_2026_BASIS.expenses:exp.total;
   const shownNet=isSeptBasis?SEPT_2026_BASIS.net:net;
@@ -1241,22 +1283,41 @@ function dateAt(s){return s?new Date(s+'T00:00:00Z'):null;}
 function dateShiftMonths(d,n,day){const a=new Date(Date.UTC(d.getUTCFullYear(),d.getUTCMonth()+n,1));const max=new Date(Date.UTC(a.getUTCFullYear(),a.getUTCMonth()+1,0)).getUTCDate();return new Date(Date.UTC(a.getUTCFullYear(),a.getUTCMonth(),Math.min(day,max)));}
 function dateIso(d){return d?d.toISOString().slice(0,10):'';}
 function cycleStart(l,d){const origin=dateAt(l.start);if(!origin||!d)return null;let n=(d.getUTCFullYear()-origin.getUTCFullYear())*12+d.getUTCMonth()-origin.getUTCMonth();if(dateShiftMonths(origin,n,origin.getUTCDate())>d)n--;return {start:dateShiftMonths(origin,n,origin.getUTCDate()),end:dateShiftMonths(origin,n+1,origin.getUTCDate())};}
-function proratedRent(l,start,end){const a=dateAt(start),b=dateAt(end);if(!a||!b||b<=a)return 0;let p=a,total=0;for(let i=0;i<1000&&p<b;i++){const cy=cycleStart(l,p);if(!cy||cy.end<=p)break;const stop=b<cy.end?b:cy.end;total+=(Number(l.fee)||0)*(stop-p)/(cy.end-cy.start);p=stop;}return Math.round(total*100)/100;}
+// Pro-rate by each actual calendar month's number of days, using each lodger's individual rent.
+// start is the first chargeable day; end is exclusive. Split at midnight on the first of each month.
+function proratedRent(l,start,end){
+ const a=dateAt(start),b=dateAt(end);
+ if(!a||!b||b<=a)return 0;
+ let p=new Date(a),total=0;
+ for(let i=0;i<1200&&p<b;i++){
+   const ym=dateIso(p).slice(0,7);
+   const next=new Date(Date.UTC(p.getUTCFullYear(),p.getUTCMonth()+1,1));
+   const stop=b<next?b:next;
+   const monthDays=daysInMonthYM(ym);
+   const count=(stop.getTime()-p.getTime())/86400000;
+   const rate=historicalFee(l,ym);
+   total+=(rate/monthDays)*count;
+   p=stop;
+ }
+ return Math.round((total+Number.EPSILON)*100)/100;
+}
 function remainingDeposit(l){const used=(data.depositTransactions||[]).filter(t=>t.lodgerId===l.id&&['applied','refund'].includes(t.type)).reduce((v,t)=>v+Number(t.amount||0),0);return Math.max(0,Math.round(((Number(l.deposit)||0)-used)*100)/100);}
 function settlementPreview(l){const move=document.getElementById('stOutDate').value,paid=document.getElementById('stPaidThrough').value;
 const deductions=Number(document.getElementById('stDeductions').value||0);
 if(!move||!paid||!l.start||dateAt(move)<dateAt(l.start)||dateAt(paid)<dateAt(l.start)||!Number.isFinite(deductions)||deductions<0)return null;
-const extension=proratedRent(l,paid,move),available=remainingDeposit(l),charges=extension+deductions;
+// The move-out date is the last occupied date and is chargeable (inclusive).
+const finalDay=dateAt(move),endExclusive=dateIso(new Date(finalDay.getTime()+86400000));
+const extension=proratedRent(l,paid,endExclusive),available=remainingDeposit(l),charges=extension+deductions;
 const applied=Math.min(available,charges),due=Math.max(0,Math.round((charges-applied)*100)/100),refund=Math.max(0,Math.round((available-applied)*100)/100);
 return{move,paid,deductions,extension,available,applied,due,refund};}
 function calcSettlement(){
  const box=document.getElementById('settlementResult');if(!box)return;const l=data.lodgers.find(x=>x.id===document.getElementById('stLodger').value);
  if(!l){box.innerHTML='';return;}
  const p=settlementPreview(l),day=dueDay(l),cy=cycleStart(l,dateAt(document.getElementById('stOutDate').value));
- if(!p){box.innerHTML='<div class="note">Enter the first unpaid day, move-out day, and any valid deductions to calculate. Dates cannot precede move-in.</div>';return;}
+ if(!p){box.innerHTML='<div class="note">Enter the first unpaid day and last occupied move-out day, plus any valid deductions, to calculate. Dates cannot precede move-in.</div>';return;}
  box.innerHTML=`<div class="settle-box"><div class="sl"><span>Original move-in / rent anniversary</span><span>${esc(l.start||'—')} / day ${day}</span></div><div class="sl"><span>Current rental cycle</span><span>${cy?dateIso(cy.start)+' to '+dateIso(cy.end):'—'}</span></div><div class="sl"><span>Rent owing after paid-through date</span><span>${peso(p.extension)}</span></div><div class="sl"><span>Other approved deductions</span><span>${peso(p.deductions)}</span></div><div class="sl"><span>Deposit liability still held</span><span>${peso(p.available)}</span></div><div class="sl"><span>Deposit to apply to charges</span><span>− ${peso(p.applied)}</span></div><div class="sl big"><span>Refund owed to lodger</span><span>${peso(p.refund)}</span></div><div class="sl big"><span>Extra amount to collect</span><span>${peso(p.due)}</span></div><div class="note">Only tick “Refund actually paid” if money was returned. An unpaid refund remains in deposits held. Extra amount to collect is not automatically treated as paid income.</div><div class="settle-actions"><button class="btn solid small" onclick="markMovedOut('${l.id}')">Confirm move-out settlement</button></div></div>`;
 }
-function calcExtension(){const box=document.getElementById('extensionResult');if(!box)return;const l=data.lodgers.find(x=>x.id===document.getElementById('stExtLodger').value);if(!l){box.innerHTML='';return;}const ym=document.getElementById('stRefMonth').value||curMonth,day=dueDay(l),n=Math.max(0,Math.floor(Number(document.getElementById('stDays').value)||0));const ref=dateAt(ym+'-'+String(Math.min(day||1,daysInMonthYM(ym))).padStart(2,'0'));const finish=new Date(ref.getTime()+n*86400000),total=proratedRent(l,dateIso(ref),dateIso(finish));box.innerHTML=`<div class="settle-box"><div class="sl"><span>Rental cycle due day</span><span>Day ${day||'—'}</span></div><div class="sl"><span>Extension dates</span><span>${dateIso(ref)} to ${dateIso(finish)} (exclusive)</span></div><div class="sl"><span>Extra days</span><span>${n}</span></div><div class="sl big"><span>Prorated rental charge</span><span>${peso(total)}</span></div><div class="settle-actions"><button class="btn solid small" onclick="postExtension('${l.id}','${ym}',${n},${total})">Record received extension payment</button></div></div>`;}
+function calcExtension(){const box=document.getElementById('extensionResult');if(!box)return;const l=data.lodgers.find(x=>x.id===document.getElementById('stExtLodger').value);if(!l){box.innerHTML='';return;}const ym=document.getElementById('stRefMonth').value||curMonth,day=dueDay(l),n=Math.max(0,Math.floor(Number(document.getElementById('stDays').value)||0));const ref=dateAt(ym+'-'+String(Math.min(day||1,daysInMonthYM(ym))).padStart(2,'0'));const finish=new Date(ref.getTime()+n*86400000),total=proratedRent(l,dateIso(ref),dateIso(finish));box.innerHTML=`<div class="settle-box"><div class="sl"><span>Rental cycle due day</span><span>Day ${day||'—'}</span></div><div class="sl"><span>Extension dates</span><span>${dateIso(ref)} through ${dateIso(new Date(finish.getTime()-86400000))} (inclusive)</span></div><div class="sl"><span>Extra days</span><span>${n}</span></div><div class="sl big"><span>Prorated rental charge</span><span>${peso(total)}</span></div><div class="settle-actions"><button class="btn solid small" onclick="postExtension('${l.id}','${ym}',${n},${total})">Record received extension payment</button></div></div>`;}
 function markMovedOut(id){const l=data.lodgers.find(x=>x.id===id);if(!l||l.status!=='active'||l.settlementId){alert('This lodger was already moved out.');return;}const p=settlementPreview(l);if(!p){alert('Provide valid paid-through and move-out dates.');return;}const paid=!!document.getElementById('stRefundPaid').checked;
 if(p.refund===0&&paid){alert('There is no refund to mark paid. Uncheck the paid box.');return;}
 const outstandingRefund=paid?0:p.refund, settlementStatus=(p.due>0||outstandingRefund>0)?'pending':'settled';
@@ -1275,9 +1336,8 @@ if(!confirm('Confirm actual payment of '+peso(owing)+' to '+l.name+'? This creat
 const d=ymd(new Date());data.depositTransactions.push({id:uid(),settlementId:st.id,lodgerId:id,date:d,type:'refund',amount:owing,note:'Refund paid after move-out'});
 st.refundPaid=Math.round((st.refundPaid+owing)*100)/100;st.status=st.balanceToCollect>0?'pending':'settled';l.settlementStatus=st.status;persist();renderAll();alert('Refund recorded.');
 }
-// Historical reconciliation entered from owner report, Nov 18, 2026.
-// The rent due anniversary is the 7th; five chargeable days are owner-reported,
-// not inferred by subtracting the 7th from the actual move-out date.
+// Historical reconciliation updated with owner correction, Nov 19, 2026.
+// Stephanie rental due November 7; extension November 7–16 inclusive = 10 days at ₱50/day.
 function recordStephanieHistoricalSettlement(){
  const l=(data.lodgers||[]).find(x=>String(x.name||'').trim().toLowerCase()==='stephanie yu');
  if(!l){alert('Stephanie Yu not found in the imported lodger records. No records changed.');return;}
@@ -1285,22 +1345,22 @@ function recordStephanieHistoricalSettlement(){
    alert('Stephanie already has a recorded settlement or deposit transactions. Review those first; no duplicate was added.');return;
  }
  if(Number(l.deposit)!==1500){alert('Stephanie’s stored opening deposit is '+peso(Number(l.deposit)||0)+' rather than the old ₱1,500 reference. Reconcile it against the handwritten records before posting.');return;}
- const msg='CONFIRM HISTORICAL ENTRY: Stephanie Yu\n\nMove-out: November 16, 2026\n5 chargeable extra days × ₱50 = ₱250 applied from deposit\nActual cash refund paid: ₱1,000\nOriginal deposit in app: ₱1,500\nUnreconciled deposit balance: ₱250\n\nThe additional ₱250 is NOT an invented charge or a second refund. It stays outstanding for investigation.\n\nNo past-month rent entries will be deleted. Add this entry?';
+ const msg='CONFIRM HISTORICAL ENTRY: Stephanie Yu\n\nMove-out: November 16, 2026\n10 extended days (November 7–16 inclusive); ₱500 applied from deposit (at ₱50/day)\nActual cash refund paid: ₱1,000\nOriginal deposit in app: ₱1,500\nRemaining deposit balance: ₱0\n\n₱1,500 deposit = ₱500 applied + ₱1,000 actually refunded. No outstanding deposit balance.\n\nNo past-month rent entries will be deleted. Add this entry?';
  if(!confirm(msg))return;
  const sid=uid(),date='2026-11-16';
- data.depositTransactions.push({id:uid(),settlementId:sid,lodgerId:l.id,date,type:'applied',amount:250,note:'OWNER CONFIRMED: 5 chargeable days × ₱50; historical move-out'});
+ data.depositTransactions.push({id:uid(),settlementId:sid,lodgerId:l.id,date,type:'applied',amount:500,note:'OWNER CORRECTION: ₱500 total for 10 chargeable days (₱50/day); historical move-out'});
  data.depositTransactions.push({id:uid(),settlementId:sid,lodgerId:l.id,date,type:'refund',amount:1000,note:'OWNER CONFIRMED: ₱1,000 cash refund paid November 16, 2026'});
- data.settlements.push({id:sid,lodgerId:l.id,date,paidThrough:'',extension:250,extensionDays:5,dailyRate:50,deductions:0,applied:250,refundOwed:1000,refundPaid:1000,balanceToCollect:0,status:'pending',unreconciledDeposit:250,remarks:'Owner confirmed 5 × ₱50 and ₱1,000 refund. Deposit originally recorded as ₱1,500; remaining ₱250 is UNRECONCILED. Do not classify as a charge/refund without documentation. Paid-through date not established.'});
- l.status='out';l.movedOutDate=date;l.settlementStatus='pending';l.settlementId=sid;l.moveOutRemarks='Moved out 2026-11-16. ₱1,000 refunded; ₱250 extension applied; ₱250 outstanding reconciliation from original ₱1,500 deposit.';
- persist();renderAll();alert('Stephanie’s historical settlement is saved. ₱250 remains explicitly unreconciled. Past monthly records are preserved.');
+ data.settlements.push({id:sid,lodgerId:l.id,date,paidThrough:'',extension:500,extensionDays:10,dailyRate:50,deductions:0,applied:500,refundOwed:1000,refundPaid:1000,balanceToCollect:0,status:'settled',unreconciledDeposit:0,remarks:'Owner corrected deposit deduction to ₱500 for 10 chargeable days (₱50/day). Actual ₱1,000 refund paid November 16, 2026. Deposit fully accounted for. Paid-through date not established.'});
+ l.status='out';l.movedOutDate=date;l.settlementStatus='settled';l.settlementId=sid;l.moveOutRemarks='Moved out 2026-11-16. ₱1,000 refunded; ₱500 applied for ten chargeable days. Original ₱1,500 deposit fully accounted for.';
+ persist();renderAll();alert('Stephanie’s historical settlement is saved: ₱500 applied and ₱1,000 refunded. Deposit balance ₱0. Past monthly records are preserved.');
 }
 function renderStephanieReconciliation(){
  const l=(data.lodgers||[]).find(x=>String(x.name||'').trim().toLowerCase()==='stephanie yu');
  if(!l)return '<p class="desc">Stephanie Yu is not yet in the current saved data. Import your existing backup first, then return here.</p>';
  const st=(data.settlements||[]).find(x=>x.lodgerId===l.id);
  const tx=(data.depositTransactions||[]).filter(x=>x.lodgerId===l.id);
- if(st||tx.length){const unresolved=Math.max(0,remainingDeposit(l));return `<p class="desc">Stephanie Yu: move-out ${esc(l.movedOutDate||st?.date||'not confirmed')}. ${st?.extensionDays===5?'Five extra chargeable days × ₱50 = ₱250. ':''}Refund transactions recorded: ${peso(tx.filter(x=>x.type==='refund').reduce((a,x)=>a+Number(x.amount||0),0))}. Deposit still held / requiring reconciliation: <b>${peso(unresolved)}</b>. The monthly history is retained. Review any earlier settlement before making changes.</p>`;}
- return `<p class="desc"><b>Stephanie Yu: owner-confirmed historical settlement</b> (Nov 16, 2026). 5 extra chargeable days at ₱50 = ₱250; ₱1,000 refund actually paid. The historical opening deposit in this app is ₱1,500, leaving ₱250 not yet explained. The app will <b>not</b> invent a second ₱250 deduction. The monthly anniversary is the 7th, but the five chargeable days do not establish a paid-through date.</p><button class="btn solid small" onclick="recordStephanieHistoricalSettlement()">Record confirmed Stephanie settlement</button>`;
+ if(st||tx.length){const unresolved=Math.max(0,remainingDeposit(l));return `<p class="desc">Stephanie Yu: move-out ${esc(l.movedOutDate||st?.date||'not confirmed')}. ${st?.extensionDays===10?'Ten chargeable days; total deposit deduction ₱500. ':''}Refund transactions recorded: ${peso(tx.filter(x=>x.type==='refund').reduce((a,x)=>a+Number(x.amount||0),0))}. Deposit still held / requiring reconciliation: <b>${peso(unresolved)}</b>. The monthly history is retained. Review any earlier settlement before making changes.</p>`;}
+ return `<p class="desc"><b>Stephanie Yu: owner-confirmed historical settlement</b> (Nov 16, 2026). 10 extended days, ₱500 total deducted (at ₱50/day); ₱1,000 refund actually paid. The historical opening deposit is ₱1,500, fully accounted for with no remaining deposit balance. The rental due date is November 7; November 7 through November 16 inclusive gives ten chargeable days.</p><button class="btn solid small" onclick="recordStephanieHistoricalSettlement()">Record confirmed Stephanie settlement</button>`;
 }
 function renderDepositLedger(){const el=document.getElementById('depositLedger');if(!el)return;const rows=(data.lodgers||[]).map(l=>{const tx=(data.depositTransactions||[]).filter(t=>t.lodgerId===l.id);const applied=tx.filter(t=>t.type==='applied').reduce((s,t)=>s+Number(t.amount||0),0),refunded=tx.filter(t=>t.type==='refund').reduce((s,t)=>s+Number(t.amount||0),0);return `<tr><td>${esc(l.name)}${l.status==='out'?' (former)':''}</td><td class="num">${peso(l.deposit)}</td><td class="num">${peso(applied)}</td><td class="num">${peso(refunded)}</td><td class="num"><b>${peso(remainingDeposit(l))}</b>${l.settlementId&&(data.settlements||[]).some(t=>t.id===l.settlementId&&t.refundOwed>t.refundPaid)?` <button class="btn ghost small" onclick="recordPendingRefund('${l.id}')">Mark refund paid</button>`:''}</td></tr>`;}).join('');const unresolved=(data.settlements||[]).filter(t=>t.status==='pending');el.innerHTML=`<div class="note"><b>Historical correction: November 16, 2026</b>${renderStephanieReconciliation()}</div><div class="table-wrap"><table><thead><tr><th>Lodger</th><th class="num">Opening deposit</th><th class="num">Applied</th><th class="num">Refunded</th><th class="num">Still held</th></tr></thead><tbody>${rows}</tbody></table></div><p class="desc">Current calculated deposit liability: <b>${peso(totalDeposits())}</b>. Pending settlements: <b>${unresolved.length}</b>. Opening deposits from legacy records must be reconciled against your handwritten ledger. A deposit shown here is not proof that cash was received.</p>`;}
 
