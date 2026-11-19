@@ -786,6 +786,32 @@ function ensureStephanieMovedOutHistory(){
  if(l.historicalRecordRecovered && !l.moveOutRemarks.includes('Recovered')){l.moveOutRemarks+=' Recovered from original roster; historic payments need verification.';changed=true;}
  return changed;
 }
+// Roselyn Patris: owner-confirmed security-deposit application, entered 2026-11-19.
+// Record the outstanding rent/charges offset without inventing cash income or a refund.
+function ensureRoselynDepositApplied(){
+ const l=(data.lodgers||[]).find(x=>String(x.name||'').trim().toLowerCase()==='roselyn patris');
+ if(!l||l.status!=='out'||Math.round(Number(l.deposit||0)*100)!==150000)return false;
+ const tx=(data.depositTransactions||[]).filter(x=>x.lodgerId===l.id);
+ const st=(data.settlements||[]).filter(x=>x.lodgerId===l.id);
+ // Never overwrite or duplicate a previously reconciled transaction.
+ if(tx.length||st.length>1||st.some(x=>Number(x.applied||0)!==0||Number(x.refundPaid||0)!==0||Number(x.refundOwed||0)!==0))return false;
+ const sid=st.length?st[0].id:'owner-roselyn-deposit-applied-20261119';
+ const knownDate=/^\d{4}-\d{2}-\d{2}$/.test(l.movedOutDate||'');
+ const date=knownDate?l.movedOutDate:'2026-11-19';
+ const dateNote=knownDate?'Applied using the existing recorded move-out date.':'Recorded November 19, 2026; original move-out date not confirmed.';
+ data.depositTransactions.push({id:'owner-roselyn-20261119-applied',settlementId:sid,lodgerId:l.id,date,type:'applied',amount:1500,note:'OWNER CONFIRMED: ₱1,500 deposit applied to outstanding rent/charges. No cash refund. '+dateNote});
+ if(st.length){
+  const record=st[0];
+  record.applied=1500;record.deductions=1500;record.refundOwed=0;record.refundPaid=0;
+  record.balanceToCollect=0;record.unreconciledDeposit=0;record.status='settled';
+  record.remarks='Owner confirmed entire ₱1,500 deposit applied to outstanding rent/charges, ₱0 refunded, ₱0 held. Charge breakdown unspecified. '+dateNote;
+ }else{
+  data.settlements.push({id:sid,lodgerId:l.id,date,paidThrough:'',extension:0,deductions:1500,applied:1500,refundOwed:0,refundPaid:0,balanceToCollect:0,status:'settled',unreconciledDeposit:0,remarks:'Owner confirmed full ₱1,500 deposit applied to outstanding rent/charges. No cash refund; charge breakdown unspecified. '+dateNote});
+ }
+ l.settlementId=sid;l.settlementStatus='settled';
+ l.moveOutRemarks=(l.moveOutRemarks?l.moveOutRemarks+' ':'')+'Owner-confirmed: ₱1,500 deposit applied to outstanding rent/charges; ₱0 refunded, ₱0 still held. '+dateNote;
+ return true;
+}
 function initializeAccountingData(){
  let changed=false;
  if(!data.depositTransactions){data.depositTransactions=[];changed=true;}
@@ -799,9 +825,10 @@ function initializeAccountingData(){
   }
  }
  if(ensureStephanieMovedOutHistory())changed=true;
+ if(ensureRoselynDepositApplied())changed=true;
  return changed;
 }
-if(initializeAccountingData())storage.set(data);
+if(initializeAccountingData()){data.updatedAt=new Date().toISOString();storage.set(data);}
 
 function showLoginHint(){
   const usingDefault=data.pins.owner==="1111"&&data.pins.manager==="2222";
@@ -1568,7 +1595,7 @@ async function cloudPull(force){
   const editing=document.activeElement&&/^(INPUT|SELECT|TEXTAREA)$/.test(document.activeElement.tagName);
   if(editing&&!force)return;
   pulling=true;
-  try{const row=await cloudFetchRow();if(row&&row.data){const rt=Date.parse(row.data.updatedAt||row.updated_at||0)||0;const lt=Date.parse(data.updatedAt||0)||0;if(force||rt>lt){data=row.data;const corrected=initializeAccountingData();storage.set(data);if(corrected)cloudPushDebounced();if(session)renderAll();}setCloudStatus("Synced ✓");}pulling=false;return row;}
+  try{const row=await cloudFetchRow();if(row&&row.data){const rt=Date.parse(row.data.updatedAt||row.updated_at||0)||0;const lt=Date.parse(data.updatedAt||0)||0;if(force||rt>lt){data=row.data;const corrected=initializeAccountingData();if(corrected)data.updatedAt=new Date().toISOString();storage.set(data);if(corrected)cloudPushDebounced();if(session)renderAll();}setCloudStatus("Synced ✓");}pulling=false;return row;}
   catch(e){setCloudStatus("Cloud check failed: "+e.message,'err');pulling=false;return undefined;}
 }
 async function cloudConnect(){
